@@ -1,0 +1,124 @@
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form {
+    border: 5px solid white; /* Increased border thickness */
+}
+
+/* Increase sizes for input fields */
+input[type="text"], input[type="password"] {
+    width: 60%; /* Adjusted to match */
+    padding: 10px; /* Uniform padding */
+    margin: 5px auto 25px; /* Uniform margin */
+    display: block;
+    border: 2px solid #ccc; /* Consistent border thickness */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    border-radius: 30px; /* Uniform border-radius */
+    font-size: 14px; /* Consistent font size */
+    margin-right: 8px;
+}
+
+
+/* Adjust container for larger padding and possibly larger overall size */
+.container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-135%);
+    width: 100%;
+    max-width: 600px; /* Adjust based on your design needs */
+    padding: 20px;
+    box-sizing: border-box;
+    
+    /* Additional styling */
+    background-color: #ffffff; /* Background color */
+}
+
+
+/* Larger button with increased padding and font size */
+button[type="submit"] {
+    background-color: #4642b6; /* Background color remains the same */
+    color: white; /* Text color remains the same */
+    padding: 8px 20px; /* Padding will adjust the size of the button */
+    margin: 10px auto 40px; /* Adjust margin as needed, auto keeps it centered */
+    display: block;
+    width: 80%; /* Makes the button longer or shorter */
+    max-width: 250px; /* Also must be changed when changing the size of the button */
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 30px; /* Keeps the rounded borders */
+    font-size: 15px; /* When adjusting the size of the button, change the font size to fit */
+    margin-right: 50px;
+}
+
+
+button[type="submit"]:hover {
+    opacity: 0.8;
+}
+
+.login-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -175px; /* Increase this value to move the image higher */
+    width: 30%; /* Adjust the width as needed */
+}
+
+.login-box-title {
+    text-align: center; /* Center align the title */
+    margin-bottom: 20px; /* Add some space below the title */
+    margin-top: 20px;
+    font-size: 25px; /* Larger font size for the title */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #4642b6; /* Adjust the color as needed */
+}
+
+.right-side-text-p1 {
+    position: absolute;
+    top: 25%; /* Adjust this value to position the text vertically as you like */
+    right: 280px; /* Aligns the text container to the right edge of the page */
+    width: 350px; /* Or any other width depending on your content */
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: left; /* Aligns the text to the right within the container */
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.right-side-text-p2 {
+    position: absolute;
+    top: 40%; /* Adjust this value to position the text vertically as you like */
+    right: 280px; /* Aligns the text container to the right edge of the page */
+    width: 342px; /* Or any other width depending on your content */
+    padding: 10x;
+    box-sizing: border-box;
+    text-align: left; /* Aligns the text to the right within the container */
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.right-side-text-p3 {
+    position: absolute;
+    top: 55%; /* Adjust this value to position the text vertically as you like */
+    right: 280px; /* Aligns the text container to the right edge of the page */
+    width: 350px; /* Or any other width depending on your content */
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: left; /* Aligns the text to the right within the container */
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

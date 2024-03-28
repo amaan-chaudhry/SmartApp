@@ -1,0 +1,50 @@
+acquirer,transaction_type,secured_non_secure,Transaction_Date,Transaction_Processing_Date,issuer_country,cardholder_country,card_brand,card_type,interchange_region,transaction_currency,transaction_amount,transaction_type
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Morocco,Morocco,MasterCard,CONSUMER DEBIT,INTER,MAD,912.86,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Panama,Panama,MasterCard,CONSUMER PREPAID,INTER,USD,26.11,In-Person
+Barclays,SALE,Secure,31/05/2023,02/06/2023,United States,United States,Visa,CONSUMER CREDIT,INTER,USD,285.09,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Ireland,Ireland,MasterCard,COMMERCIAL CREDIT,INTRA,SEK,919.23,Online
+Barclays,SALE,Secure,31/05/2023,02/06/2023,United States,United States,MasterCard,CONSUMER CREDIT,INTER,USD,504.75,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United Kingdom,United Kingdom,MasterCard,COMMERCIAL CREDIT,INTRA,SEK,240.42,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Canada,Canada,Visa,COMMERCIAL BUSINESS,INTER,SEK,1443.71,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Mexico,Mexico,MasterCard,CONSUMER CREDIT,INTER,USD,74.5,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Morocco,Morocco,Visa,CONSUMER DEBIT,INTER,USD,20.82,In-Person
+Barclays,SALE,Secure,31/05/2023,02/06/2023,Sweden,Sweden,MasterCard,CONSUMER DEBIT,INTRA-E,SEK,3701.58,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United States,United States,MasterCard,CONSUMER DEBIT,INTER,USD,69.81,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Hong Kong,Hong Kong,MasterCard,COMMERCIAL CORPORATE,INTER,MAD,1111.12,Online
+Barclays,SALE,Secure,31/05/2023,02/06/2023,Norway,Norway,Visa,CONSUMER DEBIT,INTRA-E,NOK,2697.14,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Morocco,Morocco,MasterCard,CONSUMER DEBIT,INTER,USD,107.58,Online
+Barclays,SALE,Secure,31/05/2023,02/06/2023,France,France,Visa,CONSUMER DEBIT,INTRA-E,MAD,309.67,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Argentina,Argentina,Visa,CONSUMER CREDIT,INTER,USD,152.72,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United States,United States,Visa,CONSUMER CREDIT,INTER,USD,163.7,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Brazil,Brazil,Visa,CONSUMER CREDIT,INTER,BRL,130.65,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Morocco,Morocco,Visa,CONSUMER DEBIT,INTER,USD,210.74,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Morocco,Morocco,MasterCard,CONSUMER CREDIT,INTER,MAD,1006.27,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United States,United States,Visa,CONSUMER CREDIT,INTER,USD,55.03,In-Person
+Barclays,SALE,Secure,31/05/2023,02/06/2023,Australia,Australia,MasterCard,CONSUMER DEBIT,INTER,AUD,900.5,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United Kingdom,United Kingdom,MasterCard,COMMERCIAL CREDIT,INTRA,DKK,350.29,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Morocco,Morocco,MasterCard,CONSUMER CREDIT,INTER,MAD,1101.32,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Sweden,Sweden,MasterCard,CONSUMER DEBIT,INTRA-E,SEK,1555.28,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United Kingdom,United Kingdom,MasterCard,COMMERCIAL CREDIT,INTRA,MAD,546.74,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United Kingdom,United Kingdom,Visa,COMMERCIAL CREDIT,INTRA,MAD,412.23,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Peru,Peru,Visa,CONSUMER CREDIT,INTER,USD,0.69,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Ireland,Ireland,MasterCard,COMMERCIAL CREDIT,INTRA,HUF,27668,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Morocco,Morocco,MasterCard,CONSUMER DEBIT,INTER,USD,83.77,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Brazil,Brazil,MasterCard,CONSUMER CREDIT,INTER,BRL,881.76,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United States,United States,Visa,CONSUMER CREDIT,INTER,USD,143.01,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United States,United States,MasterCard,CONSUMER CREDIT,INTER,USD,137.31,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Morocco,Morocco,MasterCard,CONSUMER CREDIT,INTER,MAD,878.37,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Morocco,Morocco,MasterCard,CONSUMER DEBIT,INTER,MAD,263,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Sweden,Sweden,MasterCard,CONSUMER DEBIT,INTRA-E,SEK,2122.57,Online
+Barclays,SALE,Secure,31/05/2023,02/06/2023,"Korea, Republic of","Korea, Republic of",MasterCard,CONSUMER CREDIT,INTER,USD,302.95,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Australia,Australia,MasterCard,CONSUMER CREDIT,INTER,AUD,118.15,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United Kingdom,United Kingdom,MasterCard,COMMERCIAL CREDIT,INTRA,HUF,18376,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Malta,Malta,Visa,COMMERCIAL BUSINESS,INTRA-E,SEK,386.65,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United States,United States,Visa,CONSUMER CREDIT,INTER,USD,141.3,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Ukraine,Ukraine,Visa,CONSUMER DEBIT,INTER,USD,174.72,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United States,United States,Visa,CONSUMER CREDIT,INTER,USD,29.15,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United Kingdom,United Kingdom,MasterCard,COMMERCIAL CREDIT,INTRA,CZK,1134.18,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United States,United States,MasterCard,CONSUMER CREDIT,INTER,USD,105.15,In-Person
+Barclays,SALE,Secure,31/05/2023,02/06/2023,Mexico,Mexico,MasterCard,CONSUMER CREDIT,INTER,MXN,12119.94,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,United States,United States,Visa,CONSUMER CREDIT,INTER,USD,28.11,Online
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Ireland,Ireland,MasterCard,COMMERCIAL CORPORATE,DOMESTIC,HUF,20977,In-Person
+Barclays,SALE,Non Secure,31/05/2023,02/06/2023,Sweden,Sweden,MasterCard,CONSUMER DEBIT,INTRA-E,SEK,1098.7,In-Person

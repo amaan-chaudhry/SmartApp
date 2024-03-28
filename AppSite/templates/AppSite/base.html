@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'AppSite/style.css'%}">
+</head>
+<body> 
+    <img src="{% static 'AppSite/SmartPath-logos_blue.png'%}" alt="Login Image" class="login-image">
+    <div class="content-border"> <!-- New wrapper for content with border -->
+        <div class="login-area">
+            <form>  
+                <div class="container">
+                    <p class="login-box-title"><b>LOGIN</b></p>
+                    <p>  
+                        <input type="text" placeholder="Enter Login ID" name="loginid" required>  
+                    </p>  
+                    <p>
+                        <input type="password" placeholder="Enter Password" name="password" required>  
+                    </p>
+                    <button type="submit">Login</button>   
+                </div>   
+            </form>
+            <form method="post" enctype="multipart/form-data" action="{% url 'home' %}">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" onclick= "window.location.href" >Upload CSV</button>
+
+            </form>
+                <div class="right-side-text">
+                    <div class="right-side-text-p1">
+                        Input and Manage Transactional Data using Analytical Dashboards
+                    </div>
+                    <div class="right-side-text-p2">
+                        Calculate MSC based on Custom Interchange, Scheme and Margin Fees
+                    </div>
+                    <div class="right-side-text-p3">
+                        Identify the most Cost Effective Routing Option for a Merchants Transaction
+                    </div>
+                </div>    
+        </div>
+    </div>
+</body>     
+</html>
+
