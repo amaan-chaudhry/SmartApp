@@ -12,7 +12,9 @@ Emargin = 0.11
 AEScheme_fee = 0.15
 Amargin = 0.5
 
-
+def hello(request):
+    #hello
+    return render(request, "AppSite/hello.html")
 
 def home(request):
     global df
