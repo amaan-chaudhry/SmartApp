@@ -11,6 +11,14 @@ EScheme_fee = 0.21
 Emargin = 0.11
 AEScheme_fee = 0.15
 Amargin = 0.5
+def login(request):
+     return render(request, "AppSite/login.html")
+
+def page2(request):
+     return render(request, "AppSite/hello.html")
+
+def register(request):
+     return render(request, "AppSite/register.html")
 
 def hello(request):
     #hello
