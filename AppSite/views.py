@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 import pandas as pd
 
+#hello 
+
 region_fee = 0
 BScheme_fee = 0.8
 Bmargin = 0.14
