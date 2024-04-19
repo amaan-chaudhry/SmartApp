@@ -16,19 +16,6 @@ user = "Amaan"
 password = "Goldenmile*!"
 sslmode = "require"
 
-<<<<<<< HEAD
-#hello 
-
-region_fee = 0
-BScheme_fee = 0.8
-Bmargin = 0.14
-EScheme_fee = 0.21
-Emargin = 0.11
-AEScheme_fee = 0.15
-Amargin = 0.5
-def login(request):
-     return render(request, "AppSite/login.html")
-=======
 # Construct connection string
 
 conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
@@ -113,7 +100,6 @@ def dashboard(request):
         return render(request, "AppSite/dashboard.html",context)
     else:
         return render(request, "AppSite/dashboard.html")
->>>>>>> 620d925 (updated)
 
 
 def register(request):
