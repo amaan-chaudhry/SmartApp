@@ -1,124 +1,120 @@
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
-form {
-    border: 5px solid white; /* Increased border thickness */
+/* Set a style for all buttons */
+button {
+  background-color: #000000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
 
-/* Increase sizes for input fields */
-input[type="text"], input[type="password"] {
-    width: 60%; /* Adjusted to match */
-    padding: 10px; /* Uniform padding */
-    margin: 5px auto 25px; /* Uniform margin */
-    display: block;
-    border: 2px solid #ccc; /* Consistent border thickness */
-    box-sizing: border-box; /* Ensures padding and border are included in the width */
-    border-radius: 30px; /* Uniform border-radius */
-    font-size: 14px; /* Consistent font size */
-    margin-right: 8px;
+button:hover {
+  opacity: 0.8;
 }
 
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
 
-/* Adjust container for larger padding and possibly larger overall size */
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
 .container {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-135%);
-    width: 100%;
-    max-width: 600px; /* Adjust based on your design needs */
-    padding: 20px;
-    box-sizing: border-box;
-    
-    /* Additional styling */
-    background-color: #ffffff; /* Background color */
+  padding: 16px;
 }
 
-
-/* Larger button with increased padding and font size */
-button[type="submit"] {
-    background-color: #4642b6; /* Background color remains the same */
-    color: white; /* Text color remains the same */
-    padding: 8px 20px; /* Padding will adjust the size of the button */
-    margin: 10px auto 40px; /* Adjust margin as needed, auto keeps it centered */
-    display: block;
-    width: 80%; /* Makes the button longer or shorter */
-    max-width: 250px; /* Also must be changed when changing the size of the button */
-    border: none;
-    cursor: pointer;
-    box-sizing: border-box;
-    border-radius: 30px; /* Keeps the rounded borders */
-    font-size: 15px; /* When adjusting the size of the button, change the font size to fit */
-    margin-right: 50px;
+span.psw {
+  float: right;
+  padding-top: 16px;
 }
 
-
-button[type="submit"]:hover {
-    opacity: 0.8;
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
 }
 
-.login-area {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
 }
 
-.login-image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -175px; /* Increase this value to move the image higher */
-    width: 30%; /* Adjust the width as needed */
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
 }
 
-.login-box-title {
-    text-align: center; /* Center align the title */
-    margin-bottom: 20px; /* Add some space below the title */
-    margin-top: 20px;
-    font-size: 25px; /* Larger font size for the title */
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #4642b6; /* Adjust the color as needed */
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
 }
 
-.right-side-text-p1 {
-    position: absolute;
-    top: 25%; /* Adjust this value to position the text vertically as you like */
-    right: 280px; /* Aligns the text container to the right edge of the page */
-    width: 350px; /* Or any other width depending on your content */
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: left; /* Aligns the text to the right within the container */
-    font-size: 18px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
 }
 
-.right-side-text-p2 {
-    position: absolute;
-    top: 40%; /* Adjust this value to position the text vertically as you like */
-    right: 280px; /* Aligns the text container to the right edge of the page */
-    width: 342px; /* Or any other width depending on your content */
-    padding: 10x;
-    box-sizing: border-box;
-    text-align: left; /* Aligns the text to the right within the container */
-    font-size: 18px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
 }
 
-.right-side-text-p3 {
-    position: absolute;
-    top: 55%; /* Adjust this value to position the text vertically as you like */
-    right: 280px; /* Aligns the text container to the right edge of the page */
-    width: 350px; /* Or any other width depending on your content */
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: left; /* Aligns the text to the right within the container */
-    font-size: 18px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
 }

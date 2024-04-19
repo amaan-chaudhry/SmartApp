@@ -24,5 +24,5 @@ urlpatterns = [
     path("amaan/", include("AppSite.urls")),
     path("register/", include("AppSite.urls")),
     path("login/",include("AppSite.urls")),
-    path("page2/",include("AppSite.urls")),
+    path("captcha/", include('captcha.urls')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

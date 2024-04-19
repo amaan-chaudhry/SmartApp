@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "rest_framework",
+    "captcha",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -127,3 +129,5 @@ STATIC_URL = '/AppSite/static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+RECAPTCHA_PUBLIC_KEY = '6LdjR7wpAAAAAHt4Yh9ObhpdPigx50r3LMlYspgE'
+RECAPTCHA_PRIVATE_KEY = '6LdjR7wpAAAAAI8L3c7you6K9SKusOkmE7XhFLJG'

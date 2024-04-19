@@ -1,48 +1,67 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MSC Construction Between Acquirers</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="{% static 'AppSite/style.css'%}">
+
 </head>
-<body> 
-    <img src="{% static 'AppSite/SmartPath-logos_blue.png'%}" alt="Login Image" class="login-image">
-    <div class="content-border"> <!-- New wrapper for content with border -->
-        <div class="login-area">
-            <form>  
-                <div class="container">
-                    <p class="login-box-title"><b>LOGIN</b></p>
-                    <p>  
-                        <input type="text" placeholder="Enter Login ID" name="loginid" required>  
-                    </p>  
-                    <p>
-                        <input type="password" placeholder="Enter Password" name="password" required>  
-                    </p>
-                    <button type="submit">Login</button>   
-                </div>   
-            </form>
-            <form method="post" enctype="multipart/form-data" action="{% url 'home' %}">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <button type="submit" onclick= "window.location.href" >Upload CSV</button>
 
-            </form>
-                <div class="right-side-text">
-                    <div class="right-side-text-p1">
-                        Input and Manage Transactional Data using Analytical Dashboards
-                    </div>
-                    <div class="right-side-text-p2">
-                        Calculate MSC based on Custom Interchange, Scheme and Margin Fees
-                    </div>
-                    <div class="right-side-text-p3">
-                        Identify the most Cost Effective Routing Option for a Merchants Transaction
-                    </div>
-                </div>    
-        </div>
-    </div>
-</body>     
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+<div id="id01" class="modal">
+    <form class="modal-content animate" action="/action_page.php" method="post">
+      {% csrf_token %}
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <img src="{% static 'AppSite/output-onlinepngtools.png'%}" alt="Avatar" class="avatar">
+      </div>
+  
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+  
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <div class="g-recaptcha" data-sitekey="6LdjR7wpAAAAAHt4Yh9ObhpdPigx50r3LMlYspgE"></div>
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+  
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="password_reset">password?</a></span>
+        <span class="register">Don't Have an account? <a href="register">Register</a></span>
+      </div>
+    </form>
+  </div>
+
+
+
+  <script>
+    document.getElementById('id01').addEventListener('submit', function(event) {
+        var response = grecaptcha.getResponse();
+        if (response.length == 0) {
+            event.preventDefault(); // Prevent form submission
+            alert('Please complete the reCAPTCHA');
+        }
+    });
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
 </html>
-

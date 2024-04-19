@@ -1,0 +1,345 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MSC Construction Between Acquirers</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'AppSite/dashboard.css'%}">
+
+</head>
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="logo-appl"></ion-icon>
+                        </span>
+                        <span class="title">Smart Path</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="dashboard">
+                        <span class="icon">
+                            
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="testing.html">
+                        <span class="icon">
+
+                        </span>
+                        <span class="title">Customers</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+
+                        </span>
+                        <span class="title">Messages</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+
+                        </span>
+                        <span class="title">Help</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+  
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                        <ion-icon name="log-out-outline"></ion-icon>          
+                        </span>
+                        <span class="title">Password</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+            </div>
+            <form action="" method="POST" enctype="multipart/form-data"> 
+                {% csrf_token %} 
+                <input type="file" id="csvfile" name = "csvfile" accept=".xlsx,.csv">
+                <a id="downloadLink" style="display: none;">Download CSV</a>
+                <div id="result"></div>
+                <select id="csvSelect" style="display: none;" name="optionsdropdown"></select>
+                <button type="submit" id = "submitbutton" style="display: none;">View Record</button>  
+            </form>
+            <table>
+                <tr>
+                  <th>Card Type</th>
+                  <th>3DS_Secure</th>
+                  <th>CardHolder Country</th>
+                  <th>Issuer Country</th>
+                  <th>Merchant Code</th>
+                  <th>Transaction Method</th>
+                  <th>Amount</th>
+                </tr>
+                <tr>
+                  <td>{{Card_type}}</td>
+
+                  <td>{{secure}}</td>
+
+                  <td>{{ch_country}}</td>
+
+                <td>{{is_country}}</td>
+
+                <td>{{merchant_code}}</td>
+
+                <td>{{transmethod}}</td>
+
+                <td>£{{Amount}}</td>
+                </tr>
+              </table>
+            <h1>AIB MSC: <br>
+                £{{ AIB }}</h1>
+            <h1>Evalon MSC: <br>
+                £{{ Eva }}</h1>
+            <h1>Barclays MSC: <br>
+                £{{ Barc }}</h1>
+            <h1>Lowest MSC: <br>
+                {{ lowest }}</h1>
+            <h1>Using the Lowest MSC ({{lowest}}) Your total fee is: <br>
+                £{{ TotalFee }}</h1>    
+
+            <div id="chart-container">
+                <canvas id="myChart"></canvas> <!-- Canvas element to render the chart -->
+            </div>
+            <div style="width: 50%; float: left;">
+              <canvas id="barChart"></canvas> <!-- Canvas element for the bar chart -->
+            </div>
+            <div style="width: 50%; float: left;">
+              <canvas id="pieChart"></canvas> <!-- Canvas element for the pie chart -->
+            </div>
+        </div>
+
+
+ 
+    <!-- =========== Scripts =========  -->
+
+    <script>let list = document.querySelectorAll(".navigation li");
+
+        function activeLink() {
+          list.forEach((item) => {
+            item.classList.remove("hovered");
+          });
+          this.classList.add("hovered");
+        }
+        
+        list.forEach((item) => item.addEventListener("mouseover", activeLink));
+        // Menu Toggle
+        let toggle = document.querySelector(".toggle");
+        let navigation = document.querySelector(".navigation");
+        let main = document.querySelector(".main");
+        
+        toggle.onclick = function () {
+          navigation.classList.toggle("active");
+          main.classList.toggle("active");
+        };
+        
+        function openCity(evt, cityName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+        
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();</script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        // pulls data from the dictionary carried over named "context"
+        var labels = {{ labels|safe }};
+        var dataset1 = {{ dataset1|safe }};
+        var dataset2 = {{ dataset2|safe }};
+        var dataset3 = {{ dataset3|safe }};
+
+        // Create the chart
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Interchange Rate',
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)', // makes it red
+                    data: dataset1
+                }, {
+                    label: 'Scheme Fee',
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)', // makes it blue
+                    data: dataset2
+                },{
+                    label: 'Margin',
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)', // makes it green
+                    data: dataset3
+                }
+              ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'MSC Construction Between Acquirers'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true
+                    }
+                }
+            }
+        });
+
+
+// Create pie chart
+var ctxPie = document.getElementById('pieChart').getContext('2d');
+var NewList = []
+for (let i = 0; i < dataset1.length; i++) {
+    NewList.push(dataset1[i] + dataset2[i]+dataset3[i]);
+}
+var pieChart = new Chart(ctxPie, {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Dataset 1',
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(153, 102, 255, 0.5)'
+            ],
+            data: NewList
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Total MSC'
+            }
+        }
+    }
+});
+</script>
+<script>
+    // Sample list of options
+    var optionsList = {{options|safe}};
+
+    // Get the select element
+    var selectElement = document.getElementById("selectOptions");
+
+    // Loop through the options list and create option elements
+    optionsList.forEach(function(optionText) {
+      var option = document.createElement("option");
+      option.text = optionText;
+      option.value = optionText; // Set value same as text
+      selectElement.add(option);
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+<script>
+document.getElementById('csvfile').addEventListener('change', function() {
+    const csvfile = document.getElementById('csvfile');
+    const file = csvfile.files[0];
+    
+    if (!file) {
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const content = e.target.result;
+        const csvData = convertToCSV(content); // Convert XLSX to CSV
+        
+
+        const csvSelect = document.getElementById('csvSelect');
+        const submitbutton = document.getElementById('submitbutton');
+        csvSelect.innerHTML = ''; // Clear previous options
+        const lines = csvData.trim().split('\n').slice(1); // Exclude the first line
+        lines.forEach((line, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = `Record ${index + 1}`; // Generate "Record 1", "Record 2", etc.
+            csvSelect.appendChild(option);
+        });
+        csvSelect.style.display = 'block';
+        submitbutton.style.display = 'block';
+    };
+
+    reader.readAsBinaryString(file);
+});
+
+function convertToCSV(content) {
+    const workbook = XLSX.read(content, { type: 'binary' });
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    return XLSX.utils.sheet_to_csv(sheet);
+}
+
+function countLines(csvData) {
+    return csvData.trim().split('\n').length;
+}
+
+    </script>
+    </body>
+</html>
