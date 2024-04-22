@@ -96,14 +96,14 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
             </div>
-            <form action="" method="POST" enctype="multipart/form-data"> 
-                {% csrf_token %} 
-                <input type="file" id="csvfile" name = "csvfile" accept=".xlsx,.csv">
-                <a id="downloadLink" style="display: none;">Download CSV</a>
-                <div id="result"></div>
-                <select id="csvSelect" style="display: none;" name="optionsdropdown"></select>
-                <button type="submit" id = "submitbutton" style="display: none;">View Record</button>  
-            </form>
+            <div id="csv-container">
+                <input type="file" id="csv-file" accept=".csv">
+                <div id="csv-data"></div>
+                <div class="direction_buttons">
+                    <button id="backBtn" disabled>Back</button>
+                    <button id="nextBtn" disabled>Next</button>
+                </div>
+            </div>
             <table>
                 <tr>
                   <th>Card Type</th>
@@ -115,31 +115,26 @@
                   <th>Amount</th>
                 </tr>
                 <tr>
-                  <td>{{Card_type}}</td>
+                <td id = 'Card_type'></td>
 
-                  <td>{{secure}}</td>
+                <td id = 'secure'></td>
 
-                  <td>{{ch_country}}</td>
+                <td id = 'ch_country'></td>
 
-                <td>{{is_country}}</td>
+                <td id = 'is_country'></td>
 
-                <td>{{merchant_code}}</td>
+                <td id = 'merchant_code'></td>
 
-                <td>{{transmethod}}</td>
+                <td id = 'transmethod'></td>
 
-                <td>£{{Amount}}</td>
+                <td id = 'amount'></td>
                 </tr>
               </table>
-            <h1>AIB MSC: <br>
-                £{{ AIB }}</h1>
-            <h1>Evalon MSC: <br>
-                £{{ Eva }}</h1>
-            <h1>Barclays MSC: <br>
-                £{{ Barc }}</h1>
-            <h1>Lowest MSC: <br>
-                {{ lowest }}</h1>
-            <h1>Using the Lowest MSC ({{lowest}}) Your total fee is: <br>
-                £{{ TotalFee }}</h1>    
+            <h1 id = 'AIB_msc'><br></h1>
+            <h1 id = 'Evalon_msc'><br></h1>
+            <h1 id = 'Barclays_msc'><br></h1>
+            <h1 id = 'Lowest Amount'><br></h1>
+   
 
             <div id="chart-container">
                 <canvas id="myChart"></canvas> <!-- Canvas element to render the chart -->
@@ -283,63 +278,110 @@ var pieChart = new Chart(ctxPie, {
 });
 </script>
 <script>
-    // Sample list of options
-    var optionsList = {{options|safe}};
+    document.getElementById('csv-file').addEventListener('change', handleFileSelect);
 
-    // Get the select element
-    var selectElement = document.getElementById("selectOptions");
+    let csvData = [];
+    let currentIndex = 1;
 
-    // Loop through the options list and create option elements
-    optionsList.forEach(function(optionText) {
-      var option = document.createElement("option");
-      option.text = optionText;
-      option.value = optionText; // Set value same as text
-      selectElement.add(option);
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
-<script>
-document.getElementById('csvfile').addEventListener('change', function() {
-    const csvfile = document.getElementById('csvfile');
-    const file = csvfile.files[0];
-    
-    if (!file) {
-        return;
+    function handleFileSelect(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const content = e.target.result;
+            csvData = content.split('\n').map(row => row.trim().split(',')); // Parsing CSV data
+            displayData();
+        };
+        reader.readAsText(file);
     }
 
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const content = e.target.result;
-        const csvData = convertToCSV(content); // Convert XLSX to CSV
-        
+    function displayData() {
+    // Get the table cells by their IDs
+    var cardTypeCell = document.getElementById('Card_type');
+    var secureCell = document.getElementById('secure');
+    var chCountryCell = document.getElementById('ch_country');
+    var isCountryCell = document.getElementById('is_country');
+    var merchantCodeCell = document.getElementById('merchant_code');
+    var transMethodCell = document.getElementById('transmethod');
+    var amountCell = document.getElementById('amount');
 
-        const csvSelect = document.getElementById('csvSelect');
-        const submitbutton = document.getElementById('submitbutton');
-        csvSelect.innerHTML = ''; // Clear previous options
-        const lines = csvData.trim().split('\n').slice(1); // Exclude the first line
-        lines.forEach((line, index) => {
-            const option = document.createElement('option');
-            option.value = index;
-            option.textContent = `Record ${index + 1}`; // Generate "Record 1", "Record 2", etc.
-            csvSelect.appendChild(option);
-        });
-        csvSelect.style.display = 'block';
-        submitbutton.style.display = 'block';
-    };
+    // Get the data of the current row
 
-    reader.readAsBinaryString(file);
-});
 
-function convertToCSV(content) {
-    const workbook = XLSX.read(content, { type: 'binary' });
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    return XLSX.utils.sheet_to_csv(sheet);
+    // Update each cell with the corresponding data from the row
+    cardTypeCell.textContent = csvData[currentIndex][0];
+    secureCell.textContent = csvData[currentIndex][1];
+    chCountryCell.textContent = csvData[currentIndex][2];
+    isCountryCell.textContent = csvData[currentIndex][3];
+    merchantCodeCell.textContent = csvData[currentIndex][4];
+    transMethodCell.textContent = csvData[currentIndex][5];
+    amountCell.textContent = csvData[currentIndex][6];
+
+        updateNavigationButtons();
+    }
+
+    function updateNavigationButtons() {
+        const backBtn = document.getElementById('backBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        backBtn.disabled = currentIndex === 1;
+        nextBtn.disabled = currentIndex === csvData.length - 1;
+    }
+
+    document.getElementById('backBtn').addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            displayData();
+            fetchPythonOutput(); // Fetch Python output when navigating
+        }
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', function() {
+        if (currentIndex < csvData.length - 1) {
+            currentIndex++;
+            displayData();
+            fetchPythonOutput(); // Fetch Python output when navigating
+        }
+    });
+
+    function fetchPythonOutput() {
+    const selectedRowData = csvData[currentIndex]; // Get the data of the selected row
+    fetch('/dashboard', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        // Include the selected row's data in the request body
+        body: 'selected_row=' + encodeURIComponent(JSON.stringify(selectedRowData))
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        // Set the formatted HTML as inner HTML of the element
+        document.getElementById('python-output').innerHTML = html;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
-function countLines(csvData) {
-    return csvData.trim().split('\n').length;
-}
-
-    </script>
+    // Function to get CSRF token from cookies
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>
     </body>
 </html>
