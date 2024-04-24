@@ -11,11 +11,12 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Dense
+from keras.utils import to_categorical
 import joblib
 from django.http import JsonResponse
 import io
-host = "smartpathazure.postgres.database.azure.com"
-dbname = "smartpath"
+host = "smartappazure.postgres.database.azure.com"
+dbname = "smartappdatabase"
 user = "Amaan"
 password = "Goldenmile*!"
 sslmode = "require"
@@ -60,7 +61,9 @@ def hello(request):
 
 def process_csv(request):
     if request.method == 'POST':
-        selected_row = request.POST.get('selected_row')
+        selected_row =  request.POST.get('selected_row')
+        print(selected_row)
+        print(type(selected_row))
         card_type = selected_row[0]
         secure = selected_row[1]
         cardholder = selected_row[2]
@@ -68,8 +71,9 @@ def process_csv(request):
         cur1 = selected_row[5]
         cur2 = selected_row[6]
         merchant = selected_row[7]
+        print(merchant)
         method = selected_row[8]
-        TransAmount = selected_row[9]
+        TransAmount = float(selected_row[9])
     
         labels = ['AIB', 'Evalon', 'Barclays']
 
@@ -245,47 +249,47 @@ def Ai_gather(request):
     if request == 'POST':
         file = request.FILES['csvfile']
         if str(file).endswith('.xlsx'):
-            df = pd.read_excel(file)
+            df = pd.read_excel(file) # if file is xlsx
         else:
-            df = pd.read_csv(file)
-        # Preprocess your data
+            df = pd.read_csv(file) # if the file is a csv
+        
         label_encoders = {}
-        columns = ['card_type', '3ds_secure', 'cardholder_country', 'issuer_country', 'transaction_method']
-        for feature in columns:
+        columns = ['card_type', '3ds_secure', 'cardholder_country', 'issuer_country', 'transaction_method'] # setting the readable columns
+        for feature in columns: # going through each column
             le = LabelEncoder()
             df[feature] = le.fit_transform(df[feature])
             label_encoders[feature] = le
-            joblib.dump(le, f'{feature}_encoder.pkl')  # Save encoder for future use
+            joblib.dump(le, f'{feature}_encoder.pkl')  # encoder might be used later down the code
 
-        # Encode 'Aquirier' column
         le_aquirier = LabelEncoder()
-        df['Aquirier'] = le_aquirier.fit_transform(df['Aquirier'])
+        df['Aquirier'] = le_aquirier.fit_transform(df['Aquirier']) # The aquirier is what we want the AI to predict, so we're encoding it for the test data
         label_encoders['Aquirier'] = le_aquirier
-        joblib.dump(le_aquirier, 'aquirier_encoder.pkl')  # Save encoder for future use
+        joblib.dump(le_aquirier, 'aquirier_encoder.pkl')  
 
-        # Split your data into training and testing sets
-        X = df.drop('Aquirier', axis=1)
+        
+        X = df.drop('Aquirier', axis=1) # so here im splitting the file into test data and demo data
         y = df['Aquirier']
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42) # 20% of the file will be test data
+                                                                                                  # 80% will be to predict the rest
         # Define your model
         model = Sequential()
-        model.add(Dense(32, input_dim=len(X.columns), activation='relu'))
+        model.add(Dense(32, input_dim=len(X.columns), activation='relu')) # using the relu, which basically tells the AI how to deal with the outcome of the prediction
         model.add(Dense(16, activation='relu'))
-        model.add(Dense(1, activation='sigmoid'))
+        model.add(Dense(1, activation='sigmoid')) # this allows the AI to interpret its findings. it ranks it between 0-1
 
         # Compile your model
-        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-
+        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']) # this allows the AI to know how accurate its prediction was with its current approach
+                                                                                          # and how much data was lost with its current approach, this was done through an optimizer
+                                                                                          # called adam
         # Train your model
-        model.fit(X_train, y_train, epochs=15, batch_size=32)
+        model.fit(X_train, y_train, epochs=15, batch_size=32) # each epoch allows the AI to adapted its approach, Usually after 8 epochs its approach is 100% accuracy but to be
+                                                              # safe I used 15
 
-        # Evaluate your model
-        _, accuracy = model.evaluate(X_test, y_test)
-        print('Accuracy: %.2f' % (accuracy*100))
+        _, accuracy = model.evaluate(X_test, y_test) #shows the accuracy and loss of each epoch
+        print('Accuracy: %.2f' % (accuracy*100))  #prints them
 
         # Predict on new data
-        new_data = pd.read_csv('existing_file_with_new_column.csv')
+        new_data = pd.read_csv('existing_file_with_new_column.csv') # user inputted file
 
         # Load the saved encoders
         label_encoders = {}
@@ -299,86 +303,9 @@ def Ai_gather(request):
         # Predict on new data
         predictions = model.predict(new_data.drop('Aquirier', axis=1))
 
-        for i in predictions:
-            if 0 in i:
+        for i in predictions:  # because the list is between 0 and 1s
+            if 0 in i:         # im converting them back into the string values
                 print("AIB")
             else:
                 print("Evalon")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class HomeView(View): 
-    def get(self, request, *args, **kwargs): 
-        return render(request, 'AppSite/login.html') 
-   
-   
-class ChartData(APIView): 
-    authentication_classes = [] 
-    permission_classes = [] 
-   
-    def get(self, request, format = None): 
-        labels = [ 
-            'January', 
-            'February',  
-            'March',  
-            'April',  
-            'May',  
-            'June',  
-            'July'
-            ] 
-        chartLabel = "my data"
-        chartdata = [0, 10, 5, 2, 20, 30, 45] 
-        data ={ 
-                     "labels":labels, 
-                     "chartLabel":chartLabel, 
-                     "chartdata":chartdata, 
-             } 
-        return Response(data) 
