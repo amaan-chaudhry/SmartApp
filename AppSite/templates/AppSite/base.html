@@ -9,7 +9,33 @@
 
 </head>
 
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<div id = "homepagebar">
+    <a href="home.html">
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Homepage</button>
+    </a>
+    <a href="oursolution.html">
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Our Solution</button>
+    </a>
+    <a href="features.html">
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Features</button>
+    </a>
+    <a href="about.html">
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">About SmartPath</button>
+    </a>
+    <a href="security.html">
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Security and Privacy</button>
+    </a>
+    <a href="contactus.html">
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Contact Us</button>
+    </a>
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+</div>
+
+<div class="homepage-image">
+  <img src="{%static 'AppSite/output-onlinepngtools.png'%}" alt="Descriptive Alt Text">
+</div>
 
 <div id="id01" class="modal">
     <form class="modal-content animate" action="/action_page.php" method="post">
@@ -39,8 +65,6 @@
       </div>
     </form>
   </div>
-
-
 
   <script>
     document.getElementById('id01').addEventListener('submit', function(event) {

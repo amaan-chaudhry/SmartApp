@@ -33,6 +33,11 @@ def dashboard(request):
 
     return render(request, "AppSite/dashboard.html")
 
+def oursolution(request):
+
+
+    return render(request, "AppSite/oursolution.html")
+
 
 def register(request):
     if request.method == 'POST':
