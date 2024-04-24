@@ -10,10 +10,12 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-.homepagebar {
-  text-align: right;
+#homepagebar {
+  text-align: center;
   padding: 10px;
+
 }
+
 
 /* Set a style for all buttons */
 button {

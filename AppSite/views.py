@@ -11,7 +11,6 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Dense
-from keras.utils import to_categorical
 import joblib
 from django.http import JsonResponse
 import io
@@ -30,15 +29,20 @@ print("Connection established")
 
 
 def dashboard(request):
-
-
     return render(request, "AppSite/dashboard.html")
 
+# --------------- Buttons on home page ---------- #
+def contact(request):
+    return render(request, "AppSite/contactus.html")
+def features(request):
+    return render(request, "AppSite/features.html")
+def security(request):
+    return render(request, "AppSite/security.html")
+def about(request):
+    return render(request, "AppSite/about.html")
 def oursolution(request):
-
-
     return render(request, "AppSite/oursolution.html")
-
+# ------------------------------------------------- # 
 
 def register(request):
     if request.method == 'POST':
@@ -312,6 +316,7 @@ def Ai_gather(request):
 class HomeView(View): 
     def get(self, request, *args, **kwargs): 
         return render(request, 'AppSite/login.html') 
+
 
 class ChartData(APIView): 
     authentication_classes = [] 
