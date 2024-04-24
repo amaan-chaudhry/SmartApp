@@ -12,6 +12,11 @@ urlpatterns = [
     path("dashboard", views.Ai_gather, name = "AiScript"),
     path('process_csv/', views.process_csv, name='process_csv'),
     path('api', views.ChartData.as_view()),
-    path('oursolution', views.oursolution, name = 'oursolution'),
+    path('oursolution/', views.oursolution),
+    path('contactus/', views.contact),
+    path('features/', views.features),
+    path('security/', views.security),
+    path('about/', views.about),
+
 
 ]
