@@ -25,6 +25,6 @@ urlpatterns = [
     path("register/", include("AppSite.urls")),
     path("login/",include("AppSite.urls")),
     path("captcha/", include('captcha.urls')),
-    path('oursolution', include("AppSite.urls")),
+    path("oursolution/", include("AppSite.urls")),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
