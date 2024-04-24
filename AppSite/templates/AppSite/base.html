@@ -11,30 +11,37 @@
 
 <div id = "homepagebar">
     <a href="">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Homepage</button>
+      Homepage
     </a>
     <a href="oursolution/">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Our Solution</button>
+      Our Solution
     </a>
     <a href="features/">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Features</button>
+      Features
     </a>
     <a href="about/">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">About SmartPath</button>
+      About SmartPath
     </a>
     <a href="security/">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Security and Privacy</button>
+      Security & Privacy
     </a>
     <a href="contactus/">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Contact Us</button>
+      Contact Us
+    </a>
+    <a href="#" onclick="document.getElementById('id01').style.display='block'; return false;" style="width:auto;">
+      Login
     </a>
 
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
 
 </div>
 
-<div class="homepage-image">
+<div id="homepage-image">
   <img src="{%static 'AppSite/output-onlinepngtools.png'%}" alt="Descriptive Alt Text">
+</div>
+
+<div class="background-image">
+  <img src="{%static 'AppSite/homepagebground.jpg'%}" alt="Descriptive Alt Text">
 </div>
 
 <div id="id01" class="modal">

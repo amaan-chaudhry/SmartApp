@@ -10,18 +10,47 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-#homepagebar {
-  text-align: center;
-  padding: 10px;
+/*
 
+.background-image {
+  background-image: url('{static "AppSite/homepagebground.jpg" %}');
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+}
+*/
+
+
+#homepagebar {
+  text-align: right;
+  padding: 15px;
+  margin-top: 30px;
 }
 
+#homepagebar a {
+  text-decoration: none;
+  margin-right: 100px;
+  font-size: large;
+}
+
+#homepage-image {
+  position: absolute;
+  top: 3px;
+  left: 20px;
+  max-width: 50%;
+  max-height: 50%;
+}
+
+#homepage-image img{
+  width: 50%;
+  height: auto;
+}
 
 /* Set a style for all buttons */
 button {
-  background-color: #000000;
+  background-color: #06094a;
   color: white;
-  padding: 14px 20px;
+  padding: 20px 30px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
