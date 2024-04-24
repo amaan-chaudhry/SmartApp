@@ -5,14 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>MSC Construction Between Acquirers</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'AppSite/dashboard.css'%}">
-
 </head>
 <body>
-    <!-- =============== Navigation ================ -->
     <div class="container">
         <div class="navigation">
             <ul>
@@ -28,7 +26,6 @@
                 <li>
                     <a href="dashboard">
                         <span class="icon">
-                            
                         </span>
                         <span class="title">Dashboard</span>
                     </a>
@@ -37,7 +34,6 @@
                 <li>
                     <a href="testing.html">
                         <span class="icon">
-
                         </span>
                         <span class="title">Customers</span>
                     </a>
@@ -46,7 +42,6 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-
                         </span>
                         <span class="title">Messages</span>
                     </a>
@@ -55,7 +50,6 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-
                         </span>
                         <span class="title">Help</span>
                     </a>
@@ -64,7 +58,6 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-  
                         </span>
                         <span class="title">Settings</span>
                     </a>
@@ -89,7 +82,6 @@
             </ul>
         </div>
 
-        <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
@@ -115,42 +107,30 @@
                   <th>Amount</th>
                 </tr>
                 <tr>
-                <td id = 'Card_type'></td>
-
-                <td id = 'secure'></td>
-
-                <td id = 'ch_country'></td>
-
-                <td id = 'is_country'></td>
-
-                <td id = 'merchant_code'></td>
-
-                <td id = 'transmethod'></td>
-
-                <td id = 'amount'></td>
+                <td id='Card_type'></td>
+                <td id='secure'></td>
+                <td id='ch_country'></td>
+                <td id='is_country'></td>
+                <td id='merchant_code'></td>
+                <td id='transmethod'></td>
+                <td id='amount'></td>
                 </tr>
               </table>
-            <h1 id = 'AIB_msc'><br></h1>
-            <h1 id = 'Evalon_msc'><br></h1>
-            <h1 id = 'Barclays_msc'><br></h1>
-            <h1 id = 'Lowest Amount'><br></h1>
-   
+            <h1 id='AIB_msc'><br></h1>
+            <h1 id='Evalon_msc'><br></h1>
+            <h1 id='Barclays_msc'><br></h1>
+            <h1 id='Lowest Amount'><br></h1>
 
             <div id="chart-container">
-                <canvas id="myChart"></canvas> <!-- Canvas element to render the chart -->
+                <canvas id="myChart"></canvas>
             </div>
             <div style="width: 50%; float: left;">
-              <canvas id="barChart"></canvas> <!-- Canvas element for the bar chart -->
+              <canvas id="barChart"></canvas>
             </div>
             <div style="width: 50%; float: left;">
-              <canvas id="pieChart"></canvas> <!-- Canvas element for the pie chart -->
+              <canvas id="pieChart"></canvas>
             </div>
         </div>
-
-
- 
-    <!-- =========== Scripts =========  -->
-
     <script>let list = document.querySelectorAll(".navigation li");
 
         function activeLink() {
@@ -161,7 +141,7 @@
         }
         
         list.forEach((item) => item.addEventListener("mouseover", activeLink));
-        // Menu Toggle
+        
         let toggle = document.querySelector(".toggle");
         let navigation = document.querySelector(".navigation");
         let main = document.querySelector(".main");
@@ -185,97 +165,93 @@
           evt.currentTarget.className += " active";
         }
         
-        // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();</script>
-    <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
-        // pulls data from the dictionary carried over named "context"
-        var labels = {{ labels|safe }};
-        var dataset1 = {{ dataset1|safe }};
-        var dataset2 = {{ dataset2|safe }};
-        var dataset3 = {{ dataset3|safe }};
-
-        // Create the chart
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Interchange Rate',
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)', // makes it red
-                    data: dataset1
-                }, {
-                    label: 'Scheme Fee',
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)', // makes it blue
-                    data: dataset2
-                },{
-                    label: 'Margin',
-                    backgroundColor: 'rgba(75, 192, 192, 0.5)', // makes it green
-                    data: dataset3
-                }
-              ]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'MSC Construction Between Acquirers'
-                    }
-                },
-                scales: {
-                    x: {
-                        stacked: true,
-                    },
-                    y: {
-                        stacked: true
-                    }
-                }
-            }
-        });
-
-
-// Create pie chart
-var ctxPie = document.getElementById('pieChart').getContext('2d');
-var NewList = []
-for (let i = 0; i < dataset1.length; i++) {
-    NewList.push(dataset1[i] + dataset2[i]+dataset3[i]);
-}
-var pieChart = new Chart(ctxPie, {
-    type: 'pie',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Dataset 1',
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.5)',
-                'rgba(54, 162, 235, 0.5)',
-                'rgba(255, 206, 86, 0.5)',
-                'rgba(75, 192, 192, 0.5)',
-                'rgba(153, 102, 255, 0.5)'
-            ],
-            data: NewList
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Total MSC'
-            }
-        }
+        function graphs(labels,dataset1,dataset2,dataset3){
+            if (window.myChart instanceof Chart) {
+        window.myChart.destroy();
     }
-});
+
+            const data =  {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Interchange Rate',
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        data: dataset1
+                    }, {
+                        label: 'Scheme Fee',
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        data: dataset2
+                    },{
+                        label: 'Margin',
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        data: dataset3
+                    }]
+            };
+            var ctx = document.getElementById('myChart').getContext('2d');
+
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'MSC Construction Between Acquirers'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                        },
+                        y: {
+                            stacked: true
+                        }
+                    }
+                }
+            });
+
+            var ctxPie = document.getElementById('pieChart').getContext('2d');
+            var NewList = []
+            for (let i = 0; i < dataset1.length; i++) {
+                NewList.push(dataset1[i] + dataset2[i]+dataset3[i]);
+            }
+            var pieChart = new Chart(ctxPie, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Dataset 1',
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(153, 102, 255, 0.5)'
+                        ],
+                        data: NewList
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Total MSC'
+                        }
+                    }
+                }
+            });
+        }
 </script>
 <script>
     document.getElementById('csv-file').addEventListener('change', handleFileSelect);
@@ -290,14 +266,13 @@ var pieChart = new Chart(ctxPie, {
         const reader = new FileReader();
         reader.onload = function(e) {
             const content = e.target.result;
-            csvData = content.split('\n').map(row => row.trim().split(',')); // Parsing CSV data
+            csvData = content.split('\n').map(row => row.trim().split(',')); 
             displayData();
         };
         reader.readAsText(file);
     }
 
     function displayData() {
-    // Get the table cells by their IDs
     var cardTypeCell = document.getElementById('Card_type');
     var secureCell = document.getElementById('secure');
     var chCountryCell = document.getElementById('ch_country');
@@ -306,17 +281,13 @@ var pieChart = new Chart(ctxPie, {
     var transMethodCell = document.getElementById('transmethod');
     var amountCell = document.getElementById('amount');
 
-    // Get the data of the current row
-
-
-    // Update each cell with the corresponding data from the row
     cardTypeCell.textContent = csvData[currentIndex][0];
     secureCell.textContent = csvData[currentIndex][1];
     chCountryCell.textContent = csvData[currentIndex][2];
     isCountryCell.textContent = csvData[currentIndex][3];
-    merchantCodeCell.textContent = csvData[currentIndex][4];
-    transMethodCell.textContent = csvData[currentIndex][5];
-    amountCell.textContent = csvData[currentIndex][6];
+    merchantCodeCell.textContent = csvData[currentIndex][7];
+    transMethodCell.textContent = csvData[currentIndex][8];
+    amountCell.textContent = csvData[currentIndex][9];
 
         updateNavigationButtons();
     }
@@ -326,14 +297,14 @@ var pieChart = new Chart(ctxPie, {
         const nextBtn = document.getElementById('nextBtn');
 
         backBtn.disabled = currentIndex === 1;
-        nextBtn.disabled = currentIndex === csvData.length - 1;
+        nextBtn.disabled = currentIndex === csvData.length - 2;
     }
 
     document.getElementById('backBtn').addEventListener('click', function() {
         if (currentIndex > 0) {
             currentIndex--;
             displayData();
-            fetchPythonOutput(); // Fetch Python output when navigating
+            fetchPythonOutput(); 
         }
     });
 
@@ -341,25 +312,64 @@ var pieChart = new Chart(ctxPie, {
         if (currentIndex < csvData.length - 1) {
             currentIndex++;
             displayData();
-            fetchPythonOutput(); // Fetch Python output when navigating
+            fetchPythonOutput(); 
         }
     });
 
     function fetchPythonOutput() {
-    const selectedRowData = csvData[currentIndex]; // Get the data of the selected row
-    fetch('/dashboard', {
+    const selectedRowData = csvData[currentIndex]; 
+    fetch('/process_csv/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'X-CSRFToken': getCookie('csrftoken')
         },
-        // Include the selected row's data in the request body
         body: 'selected_row=' + encodeURIComponent(JSON.stringify(selectedRowData))
     })
     .then(response => response.json())
     .then(data => {
-
-        // Set the formatted HTML as inner HTML of the element
+        console.log('Received data:', data.result.AIB);
+        var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: eval(data.result.labels),
+                    datasets: [{
+                        label: 'Interchange Rate',
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)', 
+                        data: eval(data.result.dataset1)
+                    }, {
+                        label: 'Scheme Fee',
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)', 
+                        data: eval(data.result.dataset2)
+                    },{
+                        label: 'Margin',
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)', 
+                        data: eval(data.result.dataset3)
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'MSC Construction Between Acquirers'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                        },
+                        y: {
+                            stacked: true
+                        }
+                    }
+                }
+            });
+        console.log(myChart);
         document.getElementById('python-output').innerHTML = html;
     })
     .catch(error => {
@@ -367,7 +377,6 @@ var pieChart = new Chart(ctxPie, {
     });
 }
 
-    // Function to get CSRF token from cookies
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -383,5 +392,39 @@ var pieChart = new Chart(ctxPie, {
         return cookieValue;
     }
 </script>
-    </body>
+<script>
+    document.getElementById('csv-file').addEventListener('change', function() {
+        const fileInput = document.getElementById('csv-file');
+        const file = fileInput.files[0];
+        if (!file) {
+            alert('Please select a file.');
+            return;
+        }
+    
+        const formData = new FormData();
+        formData.append('csv_file', file);
+    
+        fetch('/process_csv/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': getCookie('csrftoken')
+                },
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to upload file.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+</body>
 </html>
