@@ -5,8 +5,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
-        
+    <form action="" method = "POST">
+        {% csrf_token %} 
+        <input type="file" accept=".csv">
+        <button type="submit">Download Update File</button>
     </form>
 </body>
 </html>

@@ -32,48 +32,14 @@
                 </li>
 
                 <li>
-                    <a href="testing.html">
+                    <a href="/acquirer/">
                         <span class="icon">
                         </span>
-                        <span class="title">Customers</span>
+                        <span class="title">Best Acquirers</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="#">
-                        <span class="icon">
-                        </span>
-                        <span class="title">Messages</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                        </span>
-                        <span class="title">Help</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                        <ion-icon name="log-out-outline"></ion-icon>          
-                        </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
+                    <a href="/">
                         <span class="icon">
                         </span>
                         <span class="title">Sign Out</span>
@@ -151,108 +117,10 @@
           main.classList.toggle("active");
         };
         
-        function openCity(evt, cityName) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-          for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablinks");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-          }
-          document.getElementById(cityName).style.display = "block";
-          evt.currentTarget.className += " active";
-        }
-        
-        document.getElementById("defaultOpen").click();</script>
+
+    </script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script>
-        function graphs(labels,dataset1,dataset2,dataset3){
-            if (window.myChart instanceof Chart) {
-        window.myChart.destroy();
-    }
-
-            const data =  {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Interchange Rate',
-                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                        data: dataset1
-                    }, {
-                        label: 'Scheme Fee',
-                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                        data: dataset2
-                    },{
-                        label: 'Margin',
-                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                        data: dataset3
-                    }]
-            };
-            var ctx = document.getElementById('myChart').getContext('2d');
-
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'MSC Construction Between Acquirers'
-                        }
-                    },
-                    scales: {
-                        x: {
-                            stacked: true,
-                        },
-                        y: {
-                            stacked: true
-                        }
-                    }
-                }
-            });
-
-            var ctxPie = document.getElementById('pieChart').getContext('2d');
-            var NewList = []
-            for (let i = 0; i < dataset1.length; i++) {
-                NewList.push(dataset1[i] + dataset2[i]+dataset3[i]);
-            }
-            var pieChart = new Chart(ctxPie, {
-                type: 'pie',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Dataset 1',
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.5)',
-                            'rgba(54, 162, 235, 0.5)',
-                            'rgba(255, 206, 86, 0.5)',
-                            'rgba(75, 192, 192, 0.5)',
-                            'rgba(153, 102, 255, 0.5)'
-                        ],
-                        data: NewList
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Total MSC'
-                        }
-                    }
-                }
-            });
-        }
-</script>
 <script>
     document.getElementById('csv-file').addEventListener('change', handleFileSelect);
 
@@ -315,9 +183,29 @@
             fetchPythonOutput(); 
         }
     });
-
+    function ChartUpdate(newData) {
+        console.log(newData); // Log the entire newData object for debugging
+    
+    // Check if myChart is defined and not null
+    if (myChart) {
+        console.log("Chart reference found. Updating data...");
+        // Update datasets if newData contains the expected structure
+        if (newData.dataset1 && newData.dataset2 && newData.dataset3) {
+            myChart.data.datasets[0].data = newData.dataset1;
+            myChart.data.datasets[1].data = newData.dataset2;
+            myChart.data.datasets[2].data = newData.dataset3;
+            myChart.update(); // Update the chart
+            console.log("Chart updated successfully.");
+        } else {
+            console.error("Error: Invalid data format in newData.");
+        }
+    } else {
+        console.error("Error: myChart reference is undefined or null.");
+    }
+};
     function fetchPythonOutput() {
     const selectedRowData = csvData[currentIndex]; 
+    console.log(selectedRowData);
     fetch('/process_csv/', {
         method: 'POST',
         headers: {
@@ -328,24 +216,31 @@
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Received data:', data.result.AIB);
-        var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
+        ChartUpdate(data.result);
+
+        //document.getElementById('python-output').innerHTML = html;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: eval(data.result.labels),
+                    labels: ['AIB', 'Evalon', 'Barclays'],
                     datasets: [{
                         label: 'Interchange Rate',
                         backgroundColor: 'rgba(255, 99, 132, 0.5)', 
-                        data: eval(data.result.dataset1)
+                        data:[0,1,2]
                     }, {
                         label: 'Scheme Fee',
                         backgroundColor: 'rgba(54, 162, 235, 0.5)', 
-                        data: eval(data.result.dataset2)
+                        data: [0,1,2]
                     },{
                         label: 'Margin',
                         backgroundColor: 'rgba(75, 192, 192, 0.5)', 
-                        data: eval(data.result.dataset3)
+                        data: [0,1,2]
                     }]
                 },
                 options: {
@@ -369,14 +264,6 @@
                     }
                 }
             });
-        console.log(myChart);
-        document.getElementById('python-output').innerHTML = html;
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {

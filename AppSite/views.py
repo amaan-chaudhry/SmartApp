@@ -1,19 +1,30 @@
 import json
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponse
 from .forms import RegistrationForm
 import pandas as pd
+from pandas import DataFrame
 from django.views.generic import View 
 from rest_framework.views import APIView 
 from rest_framework.response import Response
 import psycopg2
-import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Dense
+from keras.utils import to_categorical
 import joblib
 from django.http import JsonResponse
 import io
+from .models import UserDetails
+from django.contrib.auth import authenticate, login
+
+
+
+
+
+
+
+
 host = "smartappazure.postgres.database.azure.com"
 dbname = "smartappdatabase"
 user = "Amaan"
@@ -48,16 +59,34 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            # Process the form data
-            # For example, you can save the user's registration information to the database
-            # Redirect to a success page or perform any other necessary action
-            return render(request, 'AppSite/register.html')
+            user = UserDetails(
+                first_name=form.cleaned_data['fname'],
+                last_name=form.cleaned_data['lname'],
+                date_of_birth=form.cleaned_data['date_of_birth'],
+                email=form.cleaned_data['email'],
+                password=form.cleaned_data['password']
+            )
+            user.save()  # uploads to the database
+            return redirect('home') 
     else:
         form = RegistrationForm()
-    return render(request, 'AppSite/register.html', {'form': form})
+    return render(request, 'Appsite/register.html', {'form': form})
 
 
 
+def authenicate_user(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        print(type(email)) 
+        print((type(password)))
+        cursor.execute(f'''SELECT * FROM public."AppSite_userdetails" WHERE email = '{email}' and password = '{password}' ''')
+        if cursor.fetchone():
+            print("worked")
+            return redirect('/dashboard')
+        else:
+            print("hello")
+    return redirect('/')
 
 def hello(request):
     #hello
@@ -65,8 +94,8 @@ def hello(request):
 
 def process_csv(request):
     if request.method == 'POST':
-        selected_row =  request.POST.get('selected_row')
-        print(selected_row)
+        selected_row =   request.POST.get('selected_row')
+        selected_row = eval(selected_row)
         print(type(selected_row))
         card_type = selected_row[0]
         secure = selected_row[1]
@@ -119,7 +148,7 @@ def home(request):
  
 
 def merchant_fee(amount,merchant):
-    cursor.execute("SELECT rate FROM merchant_code WHERE %s BETWEEN min_value AND max_value"%(merchant))
+    cursor.execute(f"SELECT rate FROM merchant_code WHERE {merchant} BETWEEN min_value AND max_value")
     value = (cursor.fetchone()[0]) * amount
 
     return value
@@ -127,11 +156,11 @@ def merchant_fee(amount,merchant):
 
 def currency_fee(amount,currency1,currency2):
     if currency1 == currency2:
-        cursor.execute("SELECT rate FROM international_code WHERE code = '%s'"%(currency1))
+        cursor.execute(f"SELECT rate FROM international_code WHERE code = '{currency1}'")
         value = cursor.fetchone()[0]
         fee = value * amount
     else:
-        cursor.execute("SELECT rate FROM international_code WHERE code = '%s' OR code = '%s'"%(currency1,currency2))
+        cursor.execute(f"SELECT rate FROM international_code WHERE code = '{currency1}' OR code = '{currency2}'")
         rates = cursor.fetchall()
         rates = [r for r, in rates]
         fee = (rates[0] + rates[1]) * amount
@@ -252,6 +281,10 @@ def CardType_fee(TransAmount,region,card_type,cardholder,method,secure):
 def Ai_gather(request):
     if request == 'POST':
         file = request.FILES['csvfile']
+        cursor.execute(f"""SELECT card_type, 3ds_secure, cardholder_country, issuer_country, transaction_method, Acquirer 
+                           FROM trans_records""")
+        df = DataFrame(cursor.fetchall())
+        df.columns=[ x.name for x in cursor.description ]
         if str(file).endswith('.xlsx'):
             df = pd.read_excel(file) # if file is xlsx
         else:
@@ -265,14 +298,14 @@ def Ai_gather(request):
             label_encoders[feature] = le
             joblib.dump(le, f'{feature}_encoder.pkl')  # encoder might be used later down the code
 
-        le_aquirier = LabelEncoder()
-        df['Aquirier'] = le_aquirier.fit_transform(df['Aquirier']) # The aquirier is what we want the AI to predict, so we're encoding it for the test data
-        label_encoders['Aquirier'] = le_aquirier
-        joblib.dump(le_aquirier, 'aquirier_encoder.pkl')  
+        le_Acquirer = LabelEncoder()
+        df['Acquirer'] = le_Acquirer.fit_transform(df['Acquirer']) # The Acquirer is what we want the AI to predict, so we're encoding it for the test data
+        label_encoders['Acquirer'] = le_Acquirer
+        joblib.dump(le_Acquirer, 'Acquirer_encoder.pkl')  
 
         
-        X = df.drop('Aquirier', axis=1) # so here im splitting the file into test data and demo data
-        y = df['Aquirier']
+        X = df.drop('Acquirer', axis=1) # so here im splitting the file into test data and demo data
+        y = df['Acquirer']
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42) # 20% of the file will be test data
                                                                                                   # 80% will be to predict the rest
         # Define your model
@@ -297,7 +330,7 @@ def Ai_gather(request):
 
         # Load the saved encoders
         label_encoders = {}
-        for feature in columns + ['Aquirier']:
+        for feature in columns + ['Acquirer']:
             label_encoders[feature] = joblib.load(f'{feature}_encoder.pkl')
 
         # Apply label encoding using the loaded encoders
@@ -305,7 +338,7 @@ def Ai_gather(request):
             new_data[feature] = label_encoders[feature].transform(new_data[feature])
 
         # Predict on new data
-        predictions = model.predict(new_data.drop('Aquirier', axis=1))
+        predictions = model.predict(new_data.drop('Acquirer', axis=1))
 
         for i in predictions:  # because the list is between 0 and 1s
             if 0 in i:         # im converting them back into the string values
@@ -315,7 +348,7 @@ def Ai_gather(request):
 
 class HomeView(View): 
     def get(self, request, *args, **kwargs): 
-        return render(request, 'AppSite/login.html') 
+        return render(request, 'AppSite/dashboard.html') 
 
 
 class ChartData(APIView): 
@@ -340,3 +373,80 @@ class ChartData(APIView):
                      "chartdata":chartdata, 
              } 
         return Response(data) 
+    
+
+def Ai_interface(request):
+    if request.method == 'POST':
+
+        df = pd.read_csv('existing_file_with_new_column.csv')
+
+
+        label_encoders = {}
+        columns = ['card_type', '3ds_secure', 'cardholder_country', 'issuer_country', 'transaction_method']
+        for feature in columns:
+            le = LabelEncoder()
+            df[feature] = le.fit_transform(df[feature])
+            label_encoders[feature] = le
+            joblib.dump(le, f'{feature}_encoder.pkl')
+
+
+        le_Acquirer = LabelEncoder()
+        df['Acquirer'] = le_Acquirer.fit_transform(df['Acquirer'])
+        label_encoders['Acquirer'] = le_Acquirer
+        joblib.dump(le_Acquirer, 'Acquirer_encoder.pkl')
+
+ 
+        X = df.drop('Acquirer', axis=1)
+        y = df['Acquirer']
+
+
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+        num_classes = len(df['Acquirer'].unique())  
+        y_train_one_hot = to_categorical(y_train, num_classes=num_classes)
+        y_test_one_hot = to_categorical(y_test, num_classes=num_classes)
+
+
+        model = Sequential()
+        model.add(Dense(32, input_dim=len(X.columns), activation='relu'))
+        model.add(Dense(16, activation='relu'))
+        model.add(Dense(num_classes, activation='softmax'))  
+
+
+        model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+ 
+        model.fit(X_train, y_train_one_hot, epochs=15, batch_size=32)
+
+
+        _, accuracy = model.evaluate(X_test, y_test_one_hot)
+        print('Accuracy: %.2f' % (accuracy * 100))
+
+        new_data = pd.read_csv('existing_file_with_new_column.csv')
+
+ 
+        for feature in columns:
+            new_data[feature] = label_encoders[feature].transform(new_data[feature])
+
+
+        predictions = model.predict(new_data.drop('Acquirer', axis=1))
+
+        predicted_classes = le_Acquirer.inverse_transform(predictions.argmax(axis=1))
+
+        print("Predicted classes:", predicted_classes)
+        df = pd.read_csv('existing_file_with_new_column.csv')
+        df['Best_Acquirer'] = predicted_classes
+        print(df)
+        updated = df.to_csv(index=False)
+        response = HttpResponse(updated, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="downloaded_file.csv"'
+        return response
+
+    return render(request, 'AppSite/AI_Page.html') 
+
+
+
+
+
+

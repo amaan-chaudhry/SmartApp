@@ -93,8 +93,12 @@ WSGI_APPLICATION = "MySite.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "smartappdatabase",
+        "USER": "Amaan",
+        "PASSWORD": "Goldenmile*!",
+        "HOST": "smartappazure.postgres.database.azure.com",
+        "PORT": "5432",
     }
 }
 
