@@ -50,9 +50,12 @@
     <h2>Empower your business with revolutionised financial decision making, AI and ML predictive analysis and intuitive data visualisation tools</h2>
   </div>
   <div >
-    <button id="learnmore" type="button">Learn More</button>
+    <a href="features/">
+      <button id="learnmore" type="button">Learn More</button>
+    </a>
   </div>
   <div>
+    <a href="http://127.0.0.1:8000/register">
     <button id="registernow" type="button">Register Now</button>
   </div>
   
@@ -81,7 +84,7 @@
       .animated_headers h1 {
           position: absolute;
           opacity: 0;
-          animation: fadeinout 5s ease-in-out forwards; 
+          animation: fadeinout 20s ease-in-out infinite; 
           
       }
       .animated_headers h1:nth-child(1) {
@@ -97,11 +100,11 @@
           animation-delay: 15s;
       }
       @keyframes fadeinout {
-          0%, 100% {
+          0%, 20%, 25%, 100% {
               opacity: 0;
               transform: translateY(50px);
           }
-          25%, 75% {
+          5%, 15% {
               opacity: 1;
               transform: translateY(0);
           }
