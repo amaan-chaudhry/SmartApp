@@ -6,27 +6,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'AppSite/style.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 <body>
 
 <div id = "homepagebar">
+    <img src="{%static 'AppSite/output-onlinepngtools.png'%}" alt="Logo">
     <a href="">
+      Homepage
       Homepage
     </a>
     <a href="oursolution/">
       Our Solution
+      Our Solution
     </a>
     <a href="features/">
+      Features
       Features
     </a>
     <a href="about/">
       About SmartPath
+      About SmartPath
     </a>
     <a href="security/">
       Security & Privacy
+      Security & Privacy
     </a>
     <a href="contactus/">
+      Contact Us
+    </a>
+    <a href="#" onclick="document.getElementById('id01').style.display='block'; return false;" style="width:auto;">
+      Login
       Contact Us
     </a>
     <a href="#" onclick="document.getElementById('id01').style.display='block'; return false;" style="width:auto;">
@@ -37,9 +51,117 @@
 
 </div>
 
+<div id="homepage_content">
+  <h1>MAXIMISE WITH</h1>
+  <div class="animated_headers">
+      <h1>Cost Optimisation</h1>
+      <h1>Settlement Data Analytics</h1>
+      <h1>Data Visualisation</h1>
+      <h1>AI and ML Insights</h1>
+  </div>
+  <div class="homepage_sentence">
+    <h2>Empower your business with revolutionised financial decision making, AI and ML predictive analysis and intuitive data visualisation tools</h2>
+  </div>
+  <div >
+    <button id="learnmore" type="button">Learn More</button>
+  </div>
+  <div>
+    <button id="registernow" type="button">Register Now</button>
+  </div>
+  
+  <style>
+      #homepage_content {
+         position: absolute;
+          top: 25%;
+          margin-left: 17%;
+          font-size: larger;
+          color: #1928b2;
+          font-family: "Varela Round", sans-serif;
+          animation: fade 4s ease-in-out infinite;
+          
+      }
+
+      .homepage_sentence  {
+        position: absolute;
+        top: 250%;
+        margin-left: 0%;
+        color: #1928b2;
+        font-family: "Varela Round", sans-serif;
+        font-size: small;
+        animation: fade 2s ease-in-out;
+      }
+
+      .animated_headers h1 {
+          position: absolute;
+          opacity: 0;
+          animation: fadeinout 5s ease-in-out forwards; 
+          
+      }
+      .animated_headers h1:nth-child(1) {
+          animation-delay: 0s;
+      }
+      .animated_headers h1:nth-child(2) {
+          animation-delay: 5s;
+      }
+      .animated_headers h1:nth-child(3) {
+          animation-delay: 10s;
+      }
+      .animated_headers h1:nth-child(4) {
+          animation-delay: 15s;
+      }
+      @keyframes fadeinout {
+          0%, 100% {
+              opacity: 0;
+              transform: translateY(50px);
+          }
+          25%, 75% {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      } 
+
+    #learnmore {
+      position: absolute;
+      top: 425%;
+      margin-left: 0%;
+      font-size: 18px;
+      font-family: "Varela Round", sans-serif;
+      color: white;
+      background-color: #389870;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+    }
+    #learnmore:hover {
+    opacity: 0.7;
+    }
+    
+    #registernow {
+      position: absolute;
+      top: 425%;
+      margin-left: 50%;
+      font-size: 18px;
+      font-family: "Varela Round", sans-serif;
+      color: white;
+      background-color: #389870 ;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+    }
+    #registernow:hover {
+    opacity: 0.7;
+    }
+  </style>
 <div id="homepage-image">
   <img src="{%static 'AppSite/output-onlinepngtools.png'%}" alt="Descriptive Alt Text">
 </div>
+
+
+
 
 <div class="background-image">
 
@@ -53,6 +175,9 @@
         <img src="{% static 'AppSite/output-onlinepngtools.png'%}" alt="Avatar" class="avatar">
       </div>
   
+      <div>
+        <input class="usernamebox"  type="text" placeholder="Enter Username" name="uname" required> <i class='bx bxs-user'></i>
+        <input class="passwordbox"  type="password" placeholder="Enter Password" name="psw" required> <i class='bx bxs-lock-alt'></i>
       <div class="container">
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Username" name="email" required>
@@ -60,16 +185,21 @@
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" required>
         <div class="g-recaptcha" data-sitekey="6LdjR7wpAAAAAHt4Yh9ObhpdPigx50r3LMlYspgE"></div>
-        <button type="submit">Login</button>
+        <button class="loginbutton" type="submit">Login</button>
+      </div>
+
+      <div class="rememberme">
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
       </div>
   
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <div class="pwreset">
         <span class="psw">Forgot <a href="password_reset">password?</a></span>
-        <span class="register">Don't Have an account? <a href="register">Register</a></span>
+      </div>
+
+      <div class="reg">
+        <span class="register">Don't have an account? <a href="register">Register</a></span>
       </div>
     </form>
   </div>
