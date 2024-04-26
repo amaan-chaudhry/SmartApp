@@ -55,7 +55,7 @@
     </a>
   </div>
   <div>
-    <a href="/register">
+    <a>
     <button id="registernow" type="button">Register Now</button>
   </div>
   
@@ -152,7 +152,7 @@
 
 
 <div id="id01" class="modal">
-    <form class="modal-content animate" action="/action_page.php" method="post">
+    <form class="modal-content animate" action="/authenicate/" method="post">
       {% csrf_token %}
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -160,8 +160,8 @@
       </div>
   
       <div>
-        <input class="usernamebox"  type="text" placeholder="Enter Username" name="uname" required> <i class='bx bxs-user'></i>
-        <input class="passwordbox"  type="password" placeholder="Enter Password" name="psw" required> <i class='bx bxs-lock-alt'></i>
+        <input class="usernamebox"  type="text" placeholder="Enter Email" name="email" required> <i class='bx bxs-user'></i>
+        <input class="passwordbox"  type="password" placeholder="Enter Password" name="password" required> <i class='bx bxs-lock-alt'></i>
         <div class="g-recaptcha" data-sitekey="6LdjR7wpAAAAAHt4Yh9ObhpdPigx50r3LMlYspgE"></div>
         <button class="loginbutton" type="submit">Login</button>
       </div>
@@ -203,5 +203,15 @@ window.onclick = function(event) {
 }
 </script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+  function Popup(message) {
+      alert(message); 
+  }
+
+  window.onload = function() {
+      var message = "{{ message }}"; 
+      showPopup(message);
+  };
+</script>
 </body>
 </html>
