@@ -78,6 +78,7 @@ def authenicate_user(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
+        print(email,password)
         print(type(email)) 
         print((type(password)))
         cursor.execute(f'''SELECT * FROM public."AppSite_userdetails" WHERE email = '{email}' and password = '{password}' ''')
@@ -85,8 +86,9 @@ def authenicate_user(request):
             print("worked")
             return redirect('/dashboard')
         else:
-            print("hello")
-    return redirect('/')
+            message = "Incorrect details"
+            return render(request, 'AppSite/base.html', {'message': message})
+    
 
 def hello(request):
     #hello
