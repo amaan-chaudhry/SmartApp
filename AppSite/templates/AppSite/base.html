@@ -12,28 +12,22 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
-<body>
 
 <div id = "homepagebar">
     <img src="{%static 'AppSite/output-onlinepngtools.png'%}" alt="Logo">
     <a href="">
       Homepage
-      Homepage
     </a>
     <a href="oursolution/">
-      Our Solution
       Our Solution
     </a>
     <a href="features/">
       Features
-      Features
     </a>
     <a href="about/">
       About SmartPath
-      About SmartPath
     </a>
     <a href="security/">
-      Security & Privacy
       Security & Privacy
     </a>
     <a href="contactus/">
@@ -41,14 +35,7 @@
     </a>
     <a href="#" onclick="document.getElementById('id01').style.display='block'; return false;" style="width:auto;">
       Login
-      Contact Us
     </a>
-    <a href="#" onclick="document.getElementById('id01').style.display='block'; return false;" style="width:auto;">
-      Login
-    </a>
-
-<!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
-
 </div>
 
 <div id="homepage_content">
@@ -63,9 +50,12 @@
     <h2>Empower your business with revolutionised financial decision making, AI and ML predictive analysis and intuitive data visualisation tools</h2>
   </div>
   <div >
-    <button id="learnmore" type="button">Learn More</button>
+    <a href="features/">
+      <button id="learnmore" type="button">Learn More</button>
+    </a>
   </div>
   <div>
+    <a href="/register">
     <button id="registernow" type="button">Register Now</button>
   </div>
   
@@ -94,7 +84,7 @@
       .animated_headers h1 {
           position: absolute;
           opacity: 0;
-          animation: fadeinout 5s ease-in-out forwards; 
+          animation: fadeinout 20s ease-in-out infinite; 
           
       }
       .animated_headers h1:nth-child(1) {
@@ -110,11 +100,11 @@
           animation-delay: 15s;
       }
       @keyframes fadeinout {
-          0%, 100% {
+          0%, 20%, 25%, 100% {
               opacity: 0;
               transform: translateY(50px);
           }
-          25%, 75% {
+          5%, 15% {
               opacity: 1;
               transform: translateY(0);
           }
@@ -156,19 +146,13 @@
     opacity: 0.7;
     }
   </style>
-<div id="homepage-image">
-  <img src="{%static 'AppSite/output-onlinepngtools.png'%}" alt="Descriptive Alt Text">
 </div>
 
 
 
-
-<div class="background-image">
-
-</div>
 
 <div id="id01" class="modal">
-    <form class="modal-content animate" action="authenicate/" method="post">
+    <form class="modal-content animate" action="/action_page.php" method="post">
       {% csrf_token %}
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -178,12 +162,6 @@
       <div>
         <input class="usernamebox"  type="text" placeholder="Enter Username" name="uname" required> <i class='bx bxs-user'></i>
         <input class="passwordbox"  type="password" placeholder="Enter Password" name="psw" required> <i class='bx bxs-lock-alt'></i>
-      <div class="container">
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Username" name="email" required>
-  
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
         <div class="g-recaptcha" data-sitekey="6LdjR7wpAAAAAHt4Yh9ObhpdPigx50r3LMlYspgE"></div>
         <button class="loginbutton" type="submit">Login</button>
       </div>
@@ -198,7 +176,7 @@
         <span class="psw">Forgot <a href="password_reset">password?</a></span>
       </div>
 
-      <div class="reg">
+      <div>
         <span class="register">Don't have an account? <a href="register">Register</a></span>
       </div>
     </form>
