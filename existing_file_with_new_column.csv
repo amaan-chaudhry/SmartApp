@@ -1,0 +1,95 @@
+card_type,3ds_secure,cardholder_country,issuer_country,merchant_category_code,transaction_method,transaction_amount,Acquirer
+VISA Consumer Credit,Enabled,Italy,Portugal,6967,EMV Chip (incl. Contactless),39,AIB
+MC Consumer Debit,Disabled,Netherlands,United Kingdom,8946,EMV Chip (incl. Contactless),26.11,AIB
+VISA Commercial Purchase,Enabled,Spain,France,5543,EMV Chip (incl. Contactless),285.09,AIB
+MC Commercial Business,Disabled,Bulgaria,Spain,6829,EMV Chip (incl. Contactless),919.23,AIB
+VISA Consumer Credit,Enabled,Bulgaria,Belgium,6707,EMV Chip (incl. Contactless),504.75,AIB
+MC Consumer Debit,Disabled,Denmark,United Kingdom,8643,EMV Chip (incl. Contactless),240.42,AIB
+VISA Commercial Purchase,Enabled,Germany,Austria,9539,EMV Chip (incl. Contactless),1443.71,AIB
+MC Commercial Business,Disabled,Sweden,Iceland,7614,EMV Chip (incl. Contactless),74.5,AIB
+VISA Consumer Credit,Enabled,Portugal,Spain,4707,EMV Chip (incl. Contactless),20.82,AIB
+MC Consumer Debit,Disabled,Czech Republic,Denmark,7958,EMV Chip (incl. Contactless),3701.58,AIB
+VISA Commercial Purchase,Enabled,Italy,Ireland,8584,EMV Chip (incl. Contactless),69.81,AIB
+MC Commercial Business,Disabled,Bulgaria,Slovenia,6569,EMV Chip (incl. Contactless),1111.12,AIB
+VISA Consumer Credit,Enabled,Lithuania,United Kingdom,6822,EMV Chip (incl. Contactless),2697.14,AIB
+MC Consumer Debit,Disabled,France,United Kingdom,7788,EMV Chip (incl. Contactless),107.58,AIB
+VISA Commercial Purchase,Enabled,Poland,Netherlands,5258,EMV Chip (incl. Contactless),309.67,AIB
+MC Commercial Business,Disabled,Sweden,Netherlands,6724,EMV Chip (incl. Contactless),152.72,AIB
+VISA Consumer Credit,Enabled,United Kingdom,Portugal,8325,EMV Chip (incl. Contactless),163.7,AIB
+MC Consumer Debit,Disabled,Ireland,Austria,7542,EMV Chip (incl. Contactless),130.65,AIB
+VISA Commercial Purchase,Enabled,Germany,Denmark,7921,EMV Chip (incl. Contactless),210.74,AIB
+MC Commercial Business,Disabled,Spain,Portugal,4745,EMV Chip (incl. Contactless),1006.27,AIB
+VISA Consumer Credit,Enabled,France,Sweden,9298,EMV Chip (incl. Contactless),55.03,AIB
+MC Consumer Debit,Disabled,Bulgaria,Italy,8895,EMV Chip (incl. Contactless),900.5,AIB
+VISA Commercial Purchase,Enabled,Croatia,Belgium,8676,EMV Chip (incl. Contactless),350.29,AIB
+MC Commercial Business,Disabled,Germany,Luxembourg,7188,EMV Chip (incl. Contactless),1101.32,AIB
+VISA Consumer Credit,Enabled,Poland,Netherlands,9977,EMV Chip (incl. Contactless),1555.28,AIB
+MC Consumer Debit,Disabled,Italy,Ireland,7389,EMV Chip (incl. Contactless),546.74,AIB
+VISA Commercial Purchase,Enabled,Spain,Portugal,9202,EMV Chip (incl. Contactless),412.23,AIB
+MC Commercial Business,Disabled,Sweden,Denmark,8289,EMV Chip (incl. Contactless),0.69,AIB
+VISA Consumer Credit,Enabled,Germany,Austria,6127,EMV Chip (incl. Contactless),27668,Evalon
+MC Consumer Debit,Disabled,Netherlands,United Kingdom,9736,EMV Chip (incl. Contactless),83.77,AIB
+VISA Commercial Purchase,Enabled,France,Italy,5559,EMV Chip (incl. Contactless),881.76,AIB
+MC Commercial Business,Disabled,Bulgaria,Spain,7518,EMV Chip (incl. Contactless),143.01,AIB
+VISA Consumer Credit,Enabled,Denmark,United Kingdom,7741,EMV Chip (incl. Contactless),137.31,AIB
+MC Consumer Debit,Disabled,Portugal,Germany,6411,EMV Chip (incl. Contactless),878.37,AIB
+VISA Commercial Purchase,Enabled,Sweden,Iceland,8544,EMV Chip (incl. Contactless),263,AIB
+MC Commercial Business,Disabled,Italy,Ireland,8361,EMV Chip (incl. Contactless),2122.57,AIB
+VISA Consumer Credit,Enabled,Portugal,Spain,4707,EMV Chip (incl. Contactless),302.95,AIB
+MC Consumer Debit,Disabled,France,United Kingdom,7803,EMV Chip (incl. Contactless),118.15,AIB
+VISA Commercial Purchase,Enabled,Italy,Portugal,9726,EMV Chip (incl. Contactless),18376,Evalon
+MC Commercial Business,Disabled,Germany,Denmark,9845,EMV Chip (incl. Contactless),386.65,AIB
+VISA Consumer Credit,Enabled,Portugal,France,6849,EMV Chip (incl. Contactless),141.3,AIB
+MC Consumer Debit,Disabled,Sweden,Netherlands,8961,EMV Chip (incl. Contactless),174.72,AIB
+VISA Commercial Purchase,Enabled,Germany,Austria,6866,EMV Chip (incl. Contactless),29.15,AIB
+MC Commercial Business,Disabled,Spain,France,7028,EMV Chip (incl. Contactless),1134.18,AIB
+VISA Consumer Credit,Enabled,Italy,Ireland,6724,EMV Chip (incl. Contactless),105.15,AIB
+MC Consumer Debit,Disabled,Bulgaria,Slovenia,6372,EMV Chip (incl. Contactless),12119.94,Evalon
+VISA Commercial Purchase,Enabled,Poland,Netherlands,7645,EMV Chip (incl. Contactless),28.11,AIB
+MC Commercial Business,Disabled,Sweden,Netherlands,9264,EMV Chip (incl. Contactless),20977,Evalon
+VISA Consumer Credit,Enabled,United Kingdom,Portugal,7447,EMV Chip (incl. Contactless),1098.7,AIB
+MC Consumer Debit,Disabled,Ireland,Austria,8784,EMV Chip (incl. Contactless),2521,AIB
+VISA Commercial Purchase,Enabled,Germany,Denmark,8565,EMV Chip (incl. Contactless),1879,AIB
+MC Commercial Business,Disabled,Spain,Portugal,7383,EMV Chip (incl. Contactless),2521,AIB
+VISA Consumer Credit,Enabled,France,Sweden,9153,EMV Chip (incl. Contactless),1312,AIB
+MC Consumer Debit,Disabled,Bulgaria,Italy,8234,EMV Chip (incl. Contactless),2212,AIB
+VISA Commercial Purchase,Enabled,Croatia,Belgium,8827,EMV Chip (incl. Contactless),2397,AIB
+MC Commercial Business,Disabled,Germany,Luxembourg,7224,EMV Chip (incl. Contactless),1892,AIB
+VISA Consumer Credit,Enabled,Poland,Netherlands,8532,EMV Chip (incl. Contactless),2279,AIB
+MC Consumer Debit,Disabled,Italy,Ireland,8573,EMV Chip (incl. Contactless),2734,AIB
+VISA Commercial Purchase,Enabled,Spain,Portugal,7315,EMV Chip (incl. Contactless),1857,AIB
+MC Commercial Business,Disabled,Sweden,Denmark,7596,EMV Chip (incl. Contactless),2414,AIB
+VISA Consumer Credit,Enabled,Germany,Austria,9445,EMV Chip (incl. Contactless),2493,AIB
+MC Consumer Debit,Disabled,Netherlands,United Kingdom,8374,EMV Chip (incl. Contactless),2112,AIB
+VISA Commercial Purchase,Enabled,France,Italy,8284,EMV Chip (incl. Contactless),2125,AIB
+MC Commercial Business,Disabled,Bulgaria,Spain,6433,EMV Chip (incl. Contactless),2352,AIB
+VISA Consumer Credit,Enabled,Denmark,United Kingdom,9566,EMV Chip (incl. Contactless),2734,AIB
+MC Consumer Debit,Disabled,Portugal,Germany,9246,EMV Chip (incl. Contactless),1889,AIB
+VISA Commercial Purchase,Enabled,Sweden,Iceland,6444,EMV Chip (incl. Contactless),2816,AIB
+MC Commercial Business,Disabled,Italy,Ireland,9268,EMV Chip (incl. Contactless),2033,AIB
+VISA Consumer Credit,Enabled,Portugal,Spain,8935,EMV Chip (incl. Contactless),1771,AIB
+MC Consumer Debit,Disabled,France,United Kingdom,6527,EMV Chip (incl. Contactless),2146,AIB
+VISA Commercial Purchase,Enabled,Italy,Portugal,9576,EMV Chip (incl. Contactless),2320,AIB
+MC Commercial Business,Disabled,Germany,Denmark,7645,EMV Chip (incl. Contactless),2633,AIB
+VISA Consumer Credit,Enabled,Portugal,France,9645,EMV Chip (incl. Contactless),1618,AIB
+MC Consumer Debit,Disabled,Sweden,Netherlands,7354,EMV Chip (incl. Contactless),2875,AIB
+VISA Commercial Purchase,Enabled,Germany,Austria,6725,EMV Chip (incl. Contactless),1979,AIB
+MC Commercial Business,Disabled,Spain,France,9284,EMV Chip (incl. Contactless),2697,AIB
+VISA Consumer Credit,Enabled,Italy,Ireland,6911,EMV Chip (incl. Contactless),2316,AIB
+MC Consumer Debit,Disabled,Bulgaria,Slovenia,9477,EMV Chip (incl. Contactless),2611,AIB
+VISA Commercial Purchase,Enabled,Poland,Netherlands,7375,EMV Chip (incl. Contactless),1752,AIB
+MC Commercial Business,Disabled,Sweden,Netherlands,9946,EMV Chip (incl. Contactless),1966,AIB
+VISA Consumer Credit,Enabled,United Kingdom,Portugal,8667,EMV Chip (incl. Contactless),2945,AIB
+MC Consumer Debit,Disabled,Ireland,Austria,7534,EMV Chip (incl. Contactless),2611,AIB
+VISA Commercial Purchase,Enabled,Germany,Denmark,7399,EMV Chip (incl. Contactless),2234,AIB
+MC Commercial Business,Disabled,Spain,Portugal,6399,EMV Chip (incl. Contactless),2368,AIB
+VISA Consumer Credit,Enabled,France,Sweden,9588,EMV Chip (incl. Contactless),1539,AIB
+MC Consumer Debit,Disabled,Bulgaria,Italy,7776,EMV Chip (incl. Contactless),2342,AIB
+VISA Commercial Purchase,Enabled,Croatia,Belgium,8123,EMV Chip (incl. Contactless),2896,AIB
+MC Commercial Business,Disabled,Germany,Luxembourg,8696,EMV Chip (incl. Contactless),1839,AIB
+VISA Consumer Credit,Enabled,Poland,Netherlands,9526,EMV Chip (incl. Contactless),2975,AIB
+MC Consumer Debit,Disabled,Italy,Ireland,9611,EMV Chip (incl. Contactless),1892,AIB
+VISA Commercial Purchase,Enabled,Spain,Portugal,8582,EMV Chip (incl. Contactless),2045,AIB
+MC Commercial Business,Disabled,Sweden,Denmark,7111,EMV Chip (incl. Contactless),2593,AIB
+VISA Consumer Credit,Enabled,Germany,Austria,9466,EMV Chip (incl. Contactless),1548,AIB
+MC Consumer Debit,Disabled,Netherlands,United Kingdom,8823,EMV Chip (incl. Contactless),2209,AIB

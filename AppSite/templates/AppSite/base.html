@@ -8,37 +8,45 @@
     <link rel="stylesheet" type="text/css" href="{% static 'AppSite/style.css'%}">
 
 </head>
+<body>
 
 <div id = "homepagebar">
     <a href="">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Homepage</button>
+      Homepage
     </a>
     <a href="oursolution/">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Our Solution</button>
+      Our Solution
     </a>
     <a href="features/">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Features</button>
+      Features
     </a>
     <a href="about/">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">About SmartPath</button>
+      About SmartPath
     </a>
     <a href="security/">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Security and Privacy</button>
+      Security & Privacy
     </a>
     <a href="contactus/">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Contact Us</button>
+      Contact Us
+    </a>
+    <a href="#" onclick="document.getElementById('id01').style.display='block'; return false;" style="width:auto;">
+      Login
     </a>
 
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
 
 </div>
 
-<div class="homepage-image">
+<div id="homepage-image">
   <img src="{%static 'AppSite/output-onlinepngtools.png'%}" alt="Descriptive Alt Text">
 </div>
 
+<div class="background-image">
+
+</div>
+
 <div id="id01" class="modal">
-    <form class="modal-content animate" action="/action_page.php" method="post">
+    <form class="modal-content animate" action="authenicate/" method="post">
       {% csrf_token %}
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -46,11 +54,11 @@
       </div>
   
       <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Username" name="email" required>
   
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
         <div class="g-recaptcha" data-sitekey="6LdjR7wpAAAAAHt4Yh9ObhpdPigx50r3LMlYspgE"></div>
         <button type="submit">Login</button>
         <label>

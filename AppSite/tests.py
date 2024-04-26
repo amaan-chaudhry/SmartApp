@@ -156,7 +156,7 @@ plt.xticks(rotation=45)
 plt.grid(True)
 plt.tight_layout()
 plt.show()'''
-# Create your tests here.
+'''# Create your tests here.
 host = "smartpathazure.postgres.database.azure.com"
 dbname = "smartpath"
 user = "Amaan"
@@ -177,4 +177,38 @@ list = ["Austria", "Belgium", "Bulgaria", "Croatia", "Cyrpus", "Czech Republic",
 for i in list:
     cursor.execute(f"INSERT INTO countries(country) VALUES ('{i}')")
     conn.commit()
-    print(i,"commited")
+    print(i,"commited")'''
+
+
+host = "smartappazure.postgres.database.azure.com"
+dbname = "smartappdatabase"
+user = "Amaan"
+password = "Goldenmile*!"
+sslmode = "require"
+
+# Construct connection string
+
+conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
+conn = psycopg2.connect(conn_string)
+cursor = conn.cursor()
+print("Connection established")
+
+
+csv_file_path = 'existing_file_with_new_column.csv'
+
+# Read the CSV file into a pandas DataFrame
+df = pd.read_csv(csv_file_path)
+
+# Reference a column by its name
+column_data = df['card_type']
+column_data1 = df['3ds_secure']
+column_data2 = df['cardholder_country']
+column_data3 = df['issuer_country']
+column_data4 = df['merchant_category_code']
+column_data5 = df['transaction_method']
+column_data6 = df['Acquirer']
+
+for i in range (len(df)):
+    cursor.execute(f"""INSERT INTO trans_records(card_type , secure, cardholder_country, issuer_country, merchant_code, transaction_method, best_acquirer)
+                   VALUES ( '{column_data[i]},'{column_data1[i]}','{column_data2[i]}','{column_data3[i]}','{column_data4[i]}','{column_data5[i]}','{column_data6[i]}')""")
+    conn.commit()
