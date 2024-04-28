@@ -5,12 +5,24 @@
 <head>
 	<title>Login</title>
     <img src="{% static 'AppSite/output-onlinepngtools.png'%}" alt="Login Image" class="login-image">
+    <link rel="stylesheet" type="text/css" href="{% static 'AppSite/style.css'%}">
 </html>
 <body>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Register</button>
+        <label for="id_fname" class="form-label">First Name:</label>
+        {{ form.fname }}
+        <label for="id_lname" class="form-label">Last Name:</label>
+        {{ form.lname }}
+        <label for="id_date_of_birth" class="form-label">Date of Birth:</label>
+        {{ form.date_of_birth }}
+        <label for="id_email" class="form-label">Email:</label>
+        {{ form.email }}
+        <label for="id_password" class="form-label">Password:</label>
+        {{ form.password }}
+        <label for="id_repassword" class="form-label">Confirm Password:</label>
+        {{ form.repassword }}
+        <button type="submit" class="submit-btn">Register</button>
     </form>
 </body>
 </html>

@@ -4,8 +4,8 @@
     height: 300px; /* Adjust height as needed */
 }
 #pieChart {
-      width: 35% !important; /* Adjust width as needed */
-      height: 35% !important;
+      width: 95% !important; /* Adjust width as needed */
+      height: 95% !important;
       display: flex;
       justify-content: center;
       align-items: center; }

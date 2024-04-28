@@ -16,7 +16,7 @@ import joblib
 from django.http import JsonResponse
 import io
 from .models import UserDetails
-from django.contrib.auth import authenticate, login
+
 
 
 
@@ -139,7 +139,7 @@ def process_csv(request):
             'lowest': marginfee[0][1],
             'TotalFee': round(TotalFee,4),
         }
-            # Return the processed data as JSON
+        print(context)            # Return the processed data as JSON
         return JsonResponse({'result': context})
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)

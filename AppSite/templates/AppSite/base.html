@@ -163,22 +163,23 @@
         <input class="usernamebox"  type="text" placeholder="Enter Email" name="email" required> <i class='bx bxs-user'></i>
         <input class="passwordbox"  type="password" placeholder="Enter Password" name="password" required> <i class='bx bxs-lock-alt'></i>
         <div class="g-recaptcha" data-sitekey="6LdjR7wpAAAAAHt4Yh9ObhpdPigx50r3LMlYspgE"></div>
-        <button class="loginbutton" type="submit">Login</button>
       </div>
-
-      <div class="rememberme">
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-      </div>
-  
-      <div class="pwreset">
-        <span class="psw">Forgot <a href="password_reset">password?</a></span>
-      </div>
-
-      <div>
-        <span class="register">Don't have an account? <a href="register">Register</a></span>
-      </div>
+      <div id="loginpage_extras" style="display: flex; justify-content: space-between;">
+        <div class="rememberme" style="margin-right: 10px;">
+            <label style="margin-right: 5px;">
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+    
+        <div class="pwreset" style="margin-right: 10px;">
+            <span class="psw" style="margin-right: 5px;">Forgot <a href="password_reset">password?</a></span>
+        </div>
+    
+        <div style="margin-right: 10px;">
+            <span class="register">Don't have an account? <a href="register">Register</a></span>
+        </div>
+    </div>
+     <button class="loginbutton" type="submit">Login</button>
     </form>
   </div>
 

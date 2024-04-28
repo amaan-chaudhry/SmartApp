@@ -82,6 +82,7 @@
                 <td id='amount'></td>
                 </tr>
               </table>
+            
             <h1 id='AIB_msc'><br></h1>
             <h1 id='Evalon_msc'><br></h1>
             <h1 id='Barclays_msc'><br></h1>
@@ -89,13 +90,11 @@
 
             <div id="chart-container">
                 <canvas id="myChart"></canvas>
+                <canvas id="pieChart" width="800" height="800"></canvas>
             </div>
-            <div style="width: 50%; float: left;">
-              <canvas id="barChart"></canvas>
-            </div>
-            <div style="width: 50%; float: left;">
-              <canvas id="pieChart"></canvas>
-            </div>
+
+
+
         </div>
     <script>let list = document.querySelectorAll(".navigation li");
 
@@ -119,13 +118,11 @@
         
 
     </script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script>
     document.getElementById('csv-file').addEventListener('change', handleFileSelect);
 
     let csvData = [];
-    let currentIndex = 1;
+    let currentIndex = 0;
 
     function handleFileSelect(event) {
         const file = event.target.files[0];
@@ -183,7 +180,7 @@
             fetchPythonOutput(); 
         }
     });
-    function ChartUpdate(newData) {
+    function ChartUpdate(newData,updatedlist) {
         console.log(newData); // Log the entire newData object for debugging
     
     // Check if myChart is defined and not null
@@ -191,9 +188,12 @@
         console.log("Chart reference found. Updating data...");
         // Update datasets if newData contains the expected structure
         if (newData.dataset1 && newData.dataset2 && newData.dataset3) {
-            myChart.data.datasets[0].data = newData.dataset1;
-            myChart.data.datasets[1].data = newData.dataset2;
-            myChart.data.datasets[2].data = newData.dataset3;
+            console.log(typeof(newData.dataset3));
+            myChart.data.datasets[0].data = eval(newData.dataset1);
+            myChart.data.datasets[1].data = eval(newData.dataset2);
+            myChart.data.datasets[2].data = eval(newData.dataset3);
+            PieChart.data.datasets[0].data = updatedlist;
+            PieChart.update();
             myChart.update(); // Update the chart
             console.log("Chart updated successfully.");
         } else {
@@ -204,6 +204,10 @@
     }
 };
     function fetchPythonOutput() {
+    aib_msc = document.getElementById('AIB_msc');
+    evalon_msc = document.getElementById('Evalon_msc');
+    barc_msc = document.getElementById('Barclays_msc');
+    lowest = document.getElementById('Lowest Amount');
     const selectedRowData = csvData[currentIndex]; 
     console.log(selectedRowData);
     fetch('/process_csv/', {
@@ -216,7 +220,19 @@
     })
     .then(response => response.json())
     .then(data => {
-        ChartUpdate(data.result);
+        const updated = eval(data.result);
+        const hello = eval(updated.dataset1);
+        const bye = eval(updated.dataset2);
+        const try1 = eval(updated.dataset3);
+        const aib_update = hello[0] + bye[0] + try1[0];
+        const evalon_update = hello[1] + bye[1] + try1[1];
+        const barclays_update  = hello[2] + bye[2] + try1[2];
+        ChartUpdate(data.result,[aib_update,evalon_update,barclays_update]);
+        console.log(hello);
+        aib_msc.innerHTML = `AIB total MSC :£${hello[0] + bye[0] + try1[0]}`;
+        evalon_msc.innerHTML =  `Evalon total MSC :£${hello[1] + bye[1] + try1[1]}`;
+        barc_msc.innerHTML =  `Barclays total MSC :£${hello[2] + bye[2] + try1[2]}`;
+        lowest.innerHTML = `The cheapest bank: ${updated.lowest}`;
 
         //document.getElementById('python-output').innerHTML = html;
     })
@@ -264,6 +280,40 @@
                     }
                 }
             });
+        const data = {
+            labels: ['AIB', 'Evalon', 'Barclays'],
+            datasets: [{
+                label: 'Data',
+                data: [33.33, 33.33, 33.34], // Divide into three equal sections
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4 // Add a hover offset to highlight slices on hover
+            }]
+        };
+
+        // Configuration options
+        const options = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Total MSC'
+                }
+            }
+        };
+        const ctx1 = document.getElementById('pieChart').getContext('2d');
+        const PieChart = new Chart(ctx1,  {
+            type: 'pie',
+            data: data,
+            options: options
+        });
+
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -278,40 +328,6 @@
         }
         return cookieValue;
     }
-</script>
-<script>
-    document.getElementById('csv-file').addEventListener('change', function() {
-        const fileInput = document.getElementById('csv-file');
-        const file = fileInput.files[0];
-        if (!file) {
-            alert('Please select a file.');
-            return;
-        }
-    
-        const formData = new FormData();
-        formData.append('csv_file', file);
-    
-        fetch('/process_csv/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': getCookie('csrftoken')
-                },
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to upload file.');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    });
 </script>
 </body>
 </html>
