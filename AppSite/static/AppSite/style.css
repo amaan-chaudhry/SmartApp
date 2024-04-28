@@ -1,7 +1,12 @@
 body{
   height: 100vh;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: radial-gradient(100% 110% at 50% 0%, white 70%, rgb(76,197,254) 80%, rgb(0,49,184));
+  flex-direction: column; 
+  font-family: "Varela Round", sans-serif;
 }
 
 #homepagebar {
@@ -74,9 +79,8 @@ input[type=text], input[type=password] {
   padding-left: 24px;
   font-weight: 700;
   font-size: 18px;
-
-
 }
+
 .g-recaptcha{
   margin-left: 25%;
   border-radius: 10px;
@@ -97,7 +101,7 @@ input[type=text], input[type=password] {
   border-radius: 10px;
   background: none;
   padding: 10px;
-    padding-left: 10px;
+  padding-left: 10px;
   padding-left: 24px;
   font-weight: 700;
   font-size: 18px;
@@ -295,9 +299,133 @@ font-size: 18px;
 .loginbutton {
   width: 100%;
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #61b08f;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: larger;
+  margin-top: 80px;
 }
+
+/*
+
+.form-control{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-family: "Varela Round", sans-serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+.registerbutton {
+  font-size: 18px;
+  font-family: "Varela Round", sans-serif;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff ;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+.registerbutton:hover {
+  opacity: 0.7;
+}
+
+form {
+  max-width: 600px; 
+  margin-left: 30%;
+  margin-bottom: 20px;
+  width: 90%; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  padding: 100px; 
+  border-radius: 15px; 
+  background-color: #61b08f;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
+
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(100% 110% at 50% 0%, white 70%, rgb(76,197,254) 80%, rgb(0,49,184));
+  flex-direction: column; 
+  font-family: "Varela Round", sans-serif;
+}
+*/
+
+/* Styling for the form */
+form {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  padding: 30px; /* Increased padding for better spacing */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+  width: 400px; /* Increased width for larger form */
+  margin: 0; /* Reset any default margin */
+}
+
+/* Styles for form fields */
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="password"] {
+  width: 100%; /* Full width */
+  padding: 10px; /* Increased padding for larger input fields */
+  margin: 10px 0; /* Increased margin for better spacing */
+  box-sizing: border-box; /* Includes padding in width */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+  background: #ffffff; /* White background for input fields */
+}
+
+/* Styles for labels */
+.form-label {
+  display: block; /* Makes the label a block element */
+  margin-bottom: 5px; /* Space below the label */
+  font-weight: bold; /* Makes text bold */
+  color: #333333; /* Dark grey color for text, for better visibility */
+}
+
+/* Styling the submit button */
+.submit-btn {
+  background-color: #61b08f;
+  color: white; /* White text */
+  padding: 12px 20px; /* Increased padding around the text */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  width: 100%; /* Full width */
+  display: block; /* Makes it a block element */
+  margin-top: 10px; /* Margin on top */
+  font-size: larger;
+}
+
+.submit-btn:hover {
+  background-color: #45a049; /* Darker shade of green on hover */
+}
+
+/* New header styling */
+.header {
+  font-size: 40px; 
+  color: #61b08f;
+  margin-bottom: 60px; 
+}
+

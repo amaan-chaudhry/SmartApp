@@ -15,9 +15,8 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="logo-appl"></ion-icon>
+                            <img src="{%static 'AppSite/output-onlinepngtools.png'%}" alt="Logo">
                         </span>
-                        <span class="title">Smart Path</span>
                     </a>
                 </li>
 
@@ -33,7 +32,7 @@
                     <a href="/acquirer">
                         <span class="icon">
                         </span>
-                        <span class="title">Best Acquirers</span>
+                        <span class="title">PathBot</span>
                     </a>
                 </li>
                 <li>
@@ -57,6 +56,39 @@
             <button type="submit">Download Update File</button>
         </form>
     </div>
+
+    <div class="pathbotbot">
+        <img src="{% static 'AppSite/pathbot.jpeg' %}" alt="bot">
+        <style>
+            .pathbotbot{
+                height: 10px;
+            }
+        </style>
+    </div>
+
+    <div class="pathbotlogo">
+        <img src="{% static 'AppSite/PathBot_transparent.png' %}" alt="bot">
+        <style>
+            .pathbotlogo{
+                height: 10px;
+            }
+        </style>
+    </div>
+
+    <div class="pathbottext">
+        <p>Hello! I'm PathBot, your AI assistant designed to predict the most cost-effective acquirer for your transactions. By analyzing your settlement data, I learn from each transaction to enhance my accuracy over time. Let's get started by uploading your data file, and I'll guide you through optimizing your acquirer selection process to maximize cost-effectiveness. Together, we'll make smarter financial decisions!</p>
+        <style>
+            .pathbottext{
+                text-align: center;
+            }
+        </style>
+    </div>
+    
+
+        
+
+
+
     <script>let list = document.querySelectorAll(".navigation li");
 
         function activeLink() {

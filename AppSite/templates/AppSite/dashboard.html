@@ -17,9 +17,8 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="logo-appl"></ion-icon>
+                            <img src="{%static 'AppSite/output-onlinepngtools.png'%}" alt="Logo">
                         </span>
-                        <span class="title">Smart Path</span>
                     </a>
                 </li>
 
@@ -35,7 +34,7 @@
                     <a href="/acquirer/">
                         <span class="icon">
                         </span>
-                        <span class="title">Best Acquirers</span>
+                        <span class="title">PathBot</span>
                     </a>
                 </li>
                 <li>
@@ -58,11 +57,12 @@
                 <input type="file" id="csv-file" accept=".csv">
                 <div id="csv-data"></div>
                 <div class="direction_buttons">
-                    <button id="backBtn" disabled>Back</button>
-                    <button id="nextBtn" disabled>Next</button>
+                    <button id="nextBtn" disabled>Next Transaction   ></button>
+                    <button id="backBtn" disabled> <    Previous Transaction</button>
+                    
                 </div>
             </div>
-            <table>
+            <table class="dptable">
                 <tr>
                   <th>Card Type</th>
                   <th>3DS_Secure</th>
@@ -82,12 +82,32 @@
                 <td id='amount'></td>
                 </tr>
               </table>
-            
-            <h1 id='AIB_msc'><br></h1>
-            <h1 id='Evalon_msc'><br></h1>
-            <h1 id='Barclays_msc'><br></h1>
-            <h1 id='Lowest Amount'><br></h1>
 
+
+              <div class="msc-values-container">
+                  <div class="msc-item">
+                      <img src="{% static 'AppSite/aib_logo.png' %}" alt="AIB Logo" class="aib-logo">
+                      <span id='AIB_msc'>£</span>
+                  </div>
+                  <div class="msc-item">
+                    <img src="{% static 'AppSite/elavon_logo.png' %}" alt="Elavon Logo" class="elavon-logo">
+                    <span id='Elavon_msc'>£</span>
+                </div>
+                <div class="msc-item">
+                    <img src="{% static 'AppSite/barclays_logo.png' %}" alt="Barclays Logo" class="barclays-logo">
+                    <span id='Barclays_msc'>£</span>
+                </div>
+                <div class="msc-item">
+                    <h1 id="Lowest Amount"></h1>
+                </div>
+              </div>
+
+              <div class="transaction-count">
+                <h0 id = 'title'> </h0> 
+              </div>
+            
+            
+            
             <div id="chart-container">
                 <canvas id="myChart"></canvas>
                 <canvas id="pieChart" width="800" height="800"></canvas>
@@ -145,7 +165,9 @@
     var merchantCodeCell = document.getElementById('merchant_code');
     var transMethodCell = document.getElementById('transmethod');
     var amountCell = document.getElementById('amount');
+    var title = document.getElementById('title');
 
+    title.innerHTML = `Transaction: ${currentIndex}`;
     cardTypeCell.textContent = csvData[currentIndex][0];
     secureCell.textContent = csvData[currentIndex][1];
     chCountryCell.textContent = csvData[currentIndex][2];
@@ -158,11 +180,12 @@
     }
 
     function updateNavigationButtons() {
-        const backBtn = document.getElementById('backBtn');
         const nextBtn = document.getElementById('nextBtn');
-
-        backBtn.disabled = currentIndex === 1;
+        const backBtn = document.getElementById('backBtn');
+        
         nextBtn.disabled = currentIndex === csvData.length - 2;
+        backBtn.disabled = currentIndex === 1;
+        
     }
 
     document.getElementById('backBtn').addEventListener('click', function() {
@@ -205,7 +228,7 @@
 };
     function fetchPythonOutput() {
     aib_msc = document.getElementById('AIB_msc');
-    evalon_msc = document.getElementById('Evalon_msc');
+    elavon_msc = document.getElementById('Elavon_msc');
     barc_msc = document.getElementById('Barclays_msc');
     lowest = document.getElementById('Lowest Amount');
     const selectedRowData = csvData[currentIndex]; 
@@ -225,14 +248,14 @@
         const bye = eval(updated.dataset2);
         const try1 = eval(updated.dataset3);
         const aib_update = hello[0] + bye[0] + try1[0];
-        const evalon_update = hello[1] + bye[1] + try1[1];
+        const elavon_update = hello[1] + bye[1] + try1[1];
         const barclays_update  = hello[2] + bye[2] + try1[2];
-        ChartUpdate(data.result,[aib_update,evalon_update,barclays_update]);
+        ChartUpdate(data.result,[aib_update,elavon_update,barclays_update]);
         console.log(hello);
-        aib_msc.innerHTML = `AIB total MSC :£${hello[0] + bye[0] + try1[0]}`;
-        evalon_msc.innerHTML =  `Evalon total MSC :£${hello[1] + bye[1] + try1[1]}`;
-        barc_msc.innerHTML =  `Barclays total MSC :£${hello[2] + bye[2] + try1[2]}`;
-        lowest.innerHTML = `The cheapest bank: ${updated.lowest}`;
+        aib_msc.innerHTML = `£${hello[0] + bye[0] + try1[0]}`;
+        elavon_msc.innerHTML =  `£${hello[1] + bye[1] + try1[1]}`;
+        barc_msc.innerHTML =  `£${hello[2] + bye[2] + try1[2]}`;
+        lowest.innerHTML = `Lowest MSC Acquirer : ${updated.lowest}`;
 
         //document.getElementById('python-output').innerHTML = html;
     })
@@ -244,7 +267,7 @@
             const myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['AIB', 'Evalon', 'Barclays'],
+                    labels: ['AIB', 'Elavon', 'Barclays'],
                     datasets: [{
                         label: 'Interchange Rate',
                         backgroundColor: 'rgba(255, 99, 132, 0.5)', 
@@ -281,7 +304,7 @@
                 }
             });
         const data = {
-            labels: ['AIB', 'Evalon', 'Barclays'],
+            labels: ['AIB', 'Elavon', 'Barclays'],
             datasets: [{
                 label: 'Data',
                 data: [33.33, 33.33, 33.34], // Divide into three equal sections

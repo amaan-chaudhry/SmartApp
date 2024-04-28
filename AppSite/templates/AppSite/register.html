@@ -1,13 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
+<div id = "homepagebar">
+    <img src="{%static 'AppSite/output-onlinepngtools.png'%}" alt="Logo">
+    <a href="/">
+      Homepage
+    </a>
+    <a href="/oursolution">
+      Our Solution
+    </a>
+    <a href="/features">
+      Features
+    </a>
+    <a href="/about">
+      About SmartPath
+    </a>
+    <a href="/security">
+      Security & Privacy
+    </a>
+    <a href="/contactus">
+      Contact Us
+    </a>
+    <a href="#" onclick="document.getElementById('id01').style.display='block'; return false;" style="width:auto;">
+      Login
+    </a>
+</div>
     
 <head>
 	<title>Login</title>
-    <img src="{% static 'AppSite/output-onlinepngtools.png'%}" alt="Login Image" class="login-image">
     <link rel="stylesheet" type="text/css" href="{% static 'AppSite/style.css'%}">
 </html>
 <body>
+    <h1 class="header">SmartPath Registration</h1>
     <form method="post">
         {% csrf_token %}
         <label for="id_fname" class="form-label">First Name:</label>

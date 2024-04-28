@@ -110,7 +110,7 @@ def process_csv(request):
         method = selected_row[8]
         TransAmount = float(selected_row[9])
     
-        labels = ['AIB', 'Evalon', 'Barclays']
+        labels = ['AIB', 'Elavon', 'Barclays']
 
         EveryRecord = []
 
@@ -223,7 +223,7 @@ def margin(amount):
         Barc = (amount*0.025) +0.3
         eva = (amount*0.0225) +0.2
         aib = (amount*0.02) +0.1
-    fee = [[aib,"AIB"],[eva,"Evalon"],[Barc,"Barclays"]]
+    fee = [[aib,"AIB"],[eva,"Elavon"],[Barc,"Barclays"]]
     return fee
 
 
@@ -346,7 +346,7 @@ def Ai_gather(request):
             if 0 in i:         # im converting them back into the string values
                 print("AIB")
             else:
-                print("Evalon")
+                print("Elavon")
 
 class HomeView(View): 
     def get(self, request, *args, **kwargs): 
