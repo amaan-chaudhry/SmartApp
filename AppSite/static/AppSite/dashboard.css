@@ -1,24 +1,22 @@
 #chart-container {
   position: fixed;
-  display: flex; /* Keeps the flexbox properties */
-  justify-content: flex-end; /* Aligns children to the right */
-  gap: 250px; /* Space between charts */
-  width: 800px; /* Adjust width as needed */
-  height: 400px; /* Adjust height as needed */
-  left: 50%; /* Center horizontally */
-  bottom: 5%; /* Position above the bottom of the page */
-  transform: translateX(-55%); /* Shifts the container back by half its width to truly center it */
+  display: flex; 
+  justify-content: flex-end; 
+  gap: 250px; 
+  width: 800px; 
+  height: 400px; 
+  left: 50%; 
+  bottom: 5%; 
+  transform: translateX(-55%); 
 }
 
 #pieChart {
   margin-right: -500px;
-  width: 50% !important; /* Adjust width as needed */
+  width: 50% !important; 
   height: 100% !important;
 }
 
-/* =========== Google Fonts ============ */
 
-/* =============== Globals ============== */
 * {
   font-family: "Ubuntu", sans-serif;
   margin: 0;
@@ -27,140 +25,139 @@
 }
 
 .dptable {
-  background-color: #2c3e50; /* Dark desaturated blue, modern and professional */
-  color: #ecf0f1; /* Soft, almost white, for great readability */
-  margin-left: 625px; /* Keeps current horizontal positioning */
-  margin-top: -75px; /* Keeps current vertical positioning */
-  border-collapse: collapse; /* Ensures that borders between cells are merged */
-  width: 90%; /* Adjusts the width to fit content or preference */
-  max-width: 1000px; /* Sets a max width for large screens */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for 3D effect */
-  border-radius: 8px; /* Rounds the corners of the table */
-  overflow: hidden; /* Ensures the rounded corners are visible */
+  background-color: #2c3e50; 
+  color: #ecf0f1; 
+  margin-left: 625px; 
+  margin-top: -75px; 
+  border-collapse: collapse; 
+  width: 90%; 
+  max-width: 1000px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px; 
+  overflow: hidden; 
 }
 
 .dptable th, .dptable td {
-  text-align: center; /* Centers text horizontally */
-  vertical-align: middle; /* Centers text vertically */
-  padding: 12px 15px; /* Provides ample space around the text */
+  text-align: center; 
+  vertical-align: middle; 
+  padding: 12px 15px; 
 }
 
 .dptable th {
-  background-color: #34495e; /* Slightly darker shade for headers */
-  color: #bdc3c7; /* Light gray for a softer contrast */
-  font-weight: bold; /* Makes header text bold */
+  background-color: #34495e; 
+  color: #bdc3c7;
+  font-weight: bold; 
 }
 
 .dptable tr:last-child td {
-  border-bottom: none; /* Removes bottom border from the last row */
+  border-bottom: none; 
 }
 
 .dptable tr:hover {
-  background-color: #485a6c; /* Changes background on hover for interactivity */
-  cursor: pointer; /* Changes the cursor to a pointer to indicate interactivity */
+  background-color: #485a6c; 
+  cursor: pointer; 
 }
 
 .msc-values-container {
   display: flex;
-  justify-content: center; /* Keeps the content centered within the container */
+  justify-content: center; 
   align-items: center;
   flex-wrap: nowrap;
-  width: auto; /* Adjust width as necessary */
-  margin-left: 650px; /* Adjust this value to push the container further to the right */
-  margin-top: 10px; /* Keeps the original top margin if needed */
+  width: auto;
+  margin-left: 650px; 
+  margin-top: 10px; 
 }
 
 .msc-values-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px auto; /* Maintains horizontal centering and original vertical margin */
-  margin-top: 100px; /* Increase this value to push further down */
-  margin-left: 1000px; /* Keeps the container pushed to the right */
+  margin: 20px auto; 
+  margin-top: 100px; 
+  margin-left: 1000px; 
   gap: 300px;
 }
 
 .aib-logo, .elavon-logo, .barclays-logo {
-  width: 200px; /* Consistent width for all logos */
-  height: auto; /* Consistent height management for aspect ratio */
-  margin-bottom: 20px; /* Adds space between the logo and the text below */
+  width: 200px; 
+  height: auto; 
+  margin-bottom: 20px; 
 }
 
 .transaction-count {
-  position: fixed; /* Maintains fixed position relative to the viewport */
-  top: 100px; /* Keeps it 100px from the top of the viewport */
-  right: 875px; /* Keeps it 875px from the right of the viewport */
-  background-color: #34495e; /* Darker shade for the background, matching the table headers */
-  color: #ecf0f1; /* Soft, almost white, for great readability, matching the table */
-  border-radius: 8px; /* Rounded corners to match the table */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect, similar to the table */
-  z-index: 1000; /* Ensures the element stays on top of other content */
-  font-size: 20px; /* Larger font size for better visibility */
-  text-align: center; /* Ensures text is centered within the element */
-  width: fit-content; /* Adjusts width to fit the content properly */
+  position: fixed; 
+  top: 100px; 
+  right: 875px; 
+  background-color: #34495e; 
+  color: #ecf0f1; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  z-index: 1000; 
+  font-size: 20px; 
+  text-align: center; 
+  width: fit-content; 
 }
 
 .msc-item {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Ensures content is centered */
-  margin: -50px; /* Reduce this value to decrease the space between widgets */
+  align-items: center; 
+  margin: -50px; 
   font-weight: bold;
   font-size: large;
-  border: 2px solid #ccc; /* Maintains the stylish border */
+  border: 2px solid #ccc; 
   padding: 35px;
   border-radius: 10px;
   background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   width: fit-content;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Keeps the smooth transition */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
   color: green;
 }
 
 .msc-item:hover {
-  transform: scale(1.05); /* Maintains the scale effect on hover */
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Enhances the shadow for better visibility */
+  transform: scale(1.05); 
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2); 
 }
 
 
 .msc-item img {
-  width: 200px; /* Maintains the current width of the logos */
-  height: auto; /* Keeps the aspect ratio intact */
+  width: 200px; 
+  height: auto; 
 }
 
 .direction_buttons {
   display: flex;
-  flex-direction: column; /* Stacks children vertically */
-  align-items: center; /* Centers the buttons horizontally */
-  justify-content: center; /* Centers the buttons vertically */
-  margin-top: 50px; /* Keeps the buttons lower down as previously adjusted */
-  padding-left: 112px; /* Resets unnecessary left padding for vertical stacking */
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  margin-top: 50px; 
+  padding-left: 112px; 
 }
 
 #backBtn, #nextBtn {
-  color: #ecf0f1; /* Keeps the text color soft, almost white */
-  font-size: medium; /* Maintains medium font size */
-  padding: 8px 30px; /* Adjust padding to reduce height and increase width */
-  background-color: #34495e; /* Maintains the background color */
-  border: 1px solid #2c3e50; /* Maintains thinner border to match the reduced button size */
-  border-radius: 4px; /* Maintains slightly smaller border radius for a subtler curve */
-  cursor: pointer; /* Keeps the cursor as a pointer */
-  transition: all 0.3s ease; /* Maintains smooth transitions for hover effects */
-  margin: 8px; /* Maintains margin to keep the buttons closer together */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Maintains slightly reduced shadow for a less pronounced effect */
-  width: auto; /* Ensures the button width is automatically adjusted to fit content */
-  white-space: nowrap; /* Prevents text from wrapping onto multiple lines */
+  color: #ecf0f1; 
+  font-size: medium; 
+  padding: 8px 30px; 
+  background-color: #34495e; 
+  border: 1px solid #2c3e50; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  margin: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  width: auto; 
+  white-space: nowrap; 
 }
-
 #nextBtn  {
   margin-right: px;
   padding: 8px 45px
 }
 
 #backBtn:hover, #nextBtn:hover {
-  background-color: #2c3e50;       /* Darkens the background on hover */
-  color: #bdc3c7;                   /* Lightens the text color on hover */
-  border-color: #ecf0f1;           /* Changes the border color on hover to a softer shade */
+  background-color: #2c3e50;      
+  color: #bdc3c7;                   
+  border-color: #ecf0f1;          
 }
 
 
@@ -183,7 +180,7 @@ body {
   width: 20px;
 }
 
-/* =============== Navigation ================ */
+
 .navigation {
   position: fixed;
   width: 300px;
@@ -252,7 +249,7 @@ body {
 }
 
 .navigation img {
-  height: 110px; /* Adjust size as needed */
+  height: 110px; 
   width: auto;
 }
 
@@ -266,7 +263,7 @@ body {
   white-space: nowrap;
 }
 
-/* --------- curve outside ---------- */
+
 .navigation ul li:hover a::before,
 .navigation ul li.hovered a::before {
   content: "";

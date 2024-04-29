@@ -18,13 +18,6 @@ import io
 from .models import UserDetails
 
 
-
-
-
-
-
-
-
 host = "smartappazure.postgres.database.azure.com"
 dbname = "smartappdatabase"
 user = "Amaan"
@@ -57,9 +50,9 @@ def oursolution(request):
 
 def register(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = RegistrationForm(request.POST) #pulls the output of registration
         if form.is_valid():
-            user = UserDetails(
+            user = UserDetails( # pulls the data from html to here
                 first_name=form.cleaned_data['fname'],
                 last_name=form.cleaned_data['lname'],
                 date_of_birth=form.cleaned_data['date_of_birth'],
@@ -67,38 +60,29 @@ def register(request):
                 password=form.cleaned_data['password']
             )
             user.save()  # uploads to the database
-            return redirect('home') 
+            return redirect('home')
     else:
         form = RegistrationForm()
     return render(request, 'Appsite/register.html', {'form': form})
 
 
 
-def authenicate_user(request):
+def authenicate_user(request): #Login system
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        print(email,password)
-        print(type(email)) 
-        print((type(password)))
-        cursor.execute(f'''SELECT * FROM public."AppSite_userdetails" WHERE email = '{email}' and password = '{password}' ''')
-        if cursor.fetchone():
-            print("worked")
+        email = request.POST.get('email') # pulls data from html to here
+        password = request.POST.get('password') # pulls data from html to here
+        cursor.execute(f'''SELECT * FROM public."AppSite_userdetails" WHERE email = '{email}' and password = '{password}' ''') 
+        if cursor.fetchone(): #Login found!
             return redirect('/dashboard')
-        else:
+        else: # Login Failed!
             message = "Incorrect details"
             return render(request, 'AppSite/base.html', {'message': message})
     
-
-def hello(request):
-    #hello
-    return render(request, "AppSite/hello.html")
 
 def process_csv(request):
     if request.method == 'POST':
         selected_row =   request.POST.get('selected_row')
         selected_row = eval(selected_row)
-        print(type(selected_row))
         card_type = selected_row[0]
         secure = selected_row[1]
         cardholder = selected_row[2]
@@ -106,27 +90,23 @@ def process_csv(request):
         cur1 = selected_row[5]
         cur2 = selected_row[6]
         merchant = selected_row[7]
-        print(merchant)
         method = selected_row[8]
         TransAmount = float(selected_row[9])
-    
-        labels = ['AIB', 'Elavon', 'Barclays']
+        labels = ['AIB', 'Evalon', 'Barclays']
 
-        EveryRecord = []
-
-        marginfee = margin(TransAmount)
-        InterRate = CardType_fee(TransAmount,region,card_type,cardholder,method,secure) +  merchant_fee(TransAmount,merchant) + currency_fee(TransAmount,cur1,cur2)
+        marginfee = margin(TransAmount) # calc margin fee  
+        InterRate = CardType_fee(TransAmount,region,card_type,cardholder,method,secure) +  merchant_fee(TransAmount,merchant) + currency_fee(TransAmount,cur1,cur2) #calc interchange rate
+        InterRate = round(InterRate,2) # 2 decimal places because its currency e.g £2.54
         cursor.execute(f"""SELECT scheme_fee
                     FROM account_types 
                     WHERE product = '{card_type}'""")
-        Scheme_fee = cursor.fetchone()[0] * TransAmount
+        Scheme_fee = cursor.fetchone()[0] * TransAmount # calc scheme fee
         Scheme_fee = round(Scheme_fee, 2)
         dataset3 = [round(marginfee[0][0], 2), round(marginfee[1][0], 2), round(marginfee[2][0], 2)]# Margin
         dataset1 = [InterRate, InterRate, InterRate]  # Interchange Rate
         dataset2 = [Scheme_fee, Scheme_fee, Scheme_fee]  # Scheme Fee  
-        marginfee.sort()
+        marginfee.sort() # sorting from smallest fee to largest fee
         TotalFee = round(marginfee[0][0], 2) + round(InterRate, 2) + round(Scheme_fee, 2)
-        EveryRecord.append([dataset1,dataset2,dataset3]) 
 
         context = {
             'labels': json.dumps(labels),
@@ -144,12 +124,11 @@ def process_csv(request):
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)
 
-def home(request):
-    
+def home(request): # base page
     return render(request, "AppSite/home.html")
  
 
-def merchant_fee(amount,merchant):
+def merchant_fee(amount,merchant): 
     cursor.execute(f"SELECT rate FROM merchant_code WHERE {merchant} BETWEEN min_value AND max_value")
     value = (cursor.fetchone()[0]) * amount
 
@@ -223,7 +202,7 @@ def margin(amount):
         Barc = (amount*0.025) +0.3
         eva = (amount*0.0225) +0.2
         aib = (amount*0.02) +0.1
-    fee = [[aib,"AIB"],[eva,"Elavon"],[Barc,"Barclays"]]
+    fee = [[aib,"AIB"],[eva,"Evalon"],[Barc,"Barclays"]]
     return fee
 
 
@@ -241,10 +220,10 @@ def CardType_fee(TransAmount,region,card_type,cardholder,method,secure):
             (s1.state = '{method}' or s1.state is NULL) and (s2.state = '{secure}' or s2.state is NULL or s2.state = 'Both')and
             (location = '{region}' or location is NULL)
         ) AS subquery;
-    """)
+    """) # checks if there a deal in domestic_table 
     list = cursor.fetchone()
     fee = 0
-    if not(list is None):
+    if not(list is None): # FOUND ONE! it does all the fees and also adds any details missing
         fee += list[2]
         if list[0] is None:
             cursor.execute(f"""
@@ -253,7 +232,7 @@ def CardType_fee(TransAmount,region,card_type,cardholder,method,secure):
                                 WHERE state = '{method}'
                                 """)
             fee += cursor.fetchone()[0]   
-        if list[1] is None:
+        if list[1] is None: # HASNT FOUND ONE! does all the detail fees individually
             cursor.execute(f"""
                             SELECT fee
                             FROM security
@@ -346,35 +325,9 @@ def Ai_gather(request):
             if 0 in i:         # im converting them back into the string values
                 print("AIB")
             else:
-                print("Elavon")
-
-class HomeView(View): 
-    def get(self, request, *args, **kwargs): 
-        return render(request, 'AppSite/dashboard.html') 
+                print("Evalon")
 
 
-class ChartData(APIView): 
-    authentication_classes = [] 
-    permission_classes = [] 
-
-    def get(self, request, format = None): 
-        labels = [ 
-            'January', 
-            'February',  
-            'March',  
-            'April',  
-            'May',  
-            'June',  
-            'July'
-            ] 
-        chartLabel = "my data"
-        chartdata = [0, 10, 5, 2, 20, 30, 45] 
-        data ={ 
-                     "labels":labels, 
-                     "chartLabel":chartLabel, 
-                     "chartdata":chartdata, 
-             } 
-        return Response(data) 
     
 
 def Ai_interface(request):
@@ -445,10 +398,4 @@ def Ai_interface(request):
         response['Content-Disposition'] = 'attachment; filename="downloaded_file.csv"'
         return response
 
-    return render(request, 'AppSite/AI_Page.html') 
-
-
-
-
-
-
+    return render(request, 'AppSite/AI_Page.html')

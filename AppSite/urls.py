@@ -6,11 +6,9 @@ from AppSite import views
 from django.views.generic import RedirectView
 urlpatterns = [
     path("", views.home, name = "home"),
-    path("amaan", views.hello, name = "hello"),
     path("register", views.register, name = "register"),
     path("dashboard", views.dashboard, name = "dashboard"),
     path('process_csv/', views.process_csv, name='process_csv'),
-    path('api', views.ChartData.as_view()),
     path('oursolution', views.oursolution),
     path('contactus', views.contact),
     path('features', views.features),

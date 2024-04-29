@@ -39,7 +39,7 @@
 </div>
 
 <div id="homepage_content">
-  <h1>MAXIMISE WITH</h1>
+  <h1>MAXIMISE WITH</h1>  
   <div class="animated_headers">
       <h1>Cost Optimisation</h1>
       <h1>Settlement Data Analytics</h1>
@@ -50,16 +50,36 @@
     <h2>Empower your business with revolutionised financial decision making, AI and ML predictive analysis and intuitive data visualisation tools</h2>
   </div>
   <div >
-    <a href="features/">
+    <a href="/features">
       <button id="learnmore" type="button">Learn More</button>
     </a>
   </div>
   <div>
-    <a>
-    <button id="registernow" type="button">Register Now</button>
+    <a href="/register">
+    <button id="registernow" type="button" onclick="url">Register Now</button>
+    </a>
+    <div class="logo">
+      <img src="{%static 'AppSite/mini_version.png'%}" alt="mini" >
+    </div>
   </div>
+ 
   
   <style>
+
+    .logo{
+      top: -150px;
+      left: 1400px;
+      position: relative;
+    }
+
+    .logo img{
+      width: 1000px; /* Adjust the width to make the image smaller */
+      height: auto; /* Maintain the aspect ratio */
+
+    }
+
+
+
       #homepage_content {
          position: absolute;
           top: 25%;
@@ -72,7 +92,7 @@
 
       .homepage_sentence  {
         position: absolute;
-        top: 250%;
+        top: 30%;
         margin-left: 0%;
         color: #1928b2;
         font-family: "Varela Round", sans-serif;
@@ -111,7 +131,7 @@
 
     #learnmore {
       position: absolute;
-      top: 425%;
+      top: 60%;
       margin-left: 0%;
       font-size: 18px;
       font-family: "Varela Round", sans-serif;
@@ -129,8 +149,8 @@
     
     #registernow {
       position: absolute;
-      top: 425%;
-      margin-left: 50%;
+      top: 60%;
+      margin-left: 15%;
       font-size: 18px;
       font-family: "Varela Round", sans-serif;
       color: white;

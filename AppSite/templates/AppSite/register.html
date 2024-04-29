@@ -33,7 +33,7 @@
 </html>
 <body>
     <h1 class="header">SmartPath Registration</h1>
-    <form method="post">
+    <form method="post" action="">
         {% csrf_token %}
         <label for="id_fname" class="form-label">First Name:</label>
         {{ form.fname }}
@@ -51,3 +51,4 @@
     </form>
 </body>
 </html>
+

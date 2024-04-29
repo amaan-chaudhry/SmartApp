@@ -49,14 +49,7 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-        <form action="" method = "POST">
-            
-            {% csrf_token %} 
-            <input type="file" accept=".csv">
-            <button type="submit">Download Update File</button>
-        </form>
     </div>
-
     <div class="pathbotbot">
         <img src="{% static 'AppSite/pathbot.jpeg' %}" alt="bot">
         <style>
@@ -74,20 +67,68 @@
             }
         </style>
     </div>
-
     <div class="pathbottext">
         <p>Hello! I'm PathBot, your AI assistant designed to predict the most cost-effective acquirer for your transactions. By analyzing your settlement data, I learn from each transaction to enhance my accuracy over time. Let's get started by uploading your data file, and I'll guide you through optimizing your acquirer selection process to maximize cost-effectiveness. Together, we'll make smarter financial decisions!</p>
-        <style>
-            .pathbottext{
-                text-align: center;
-            }
-        </style>
     </div>
-    
+    <form action="" method = "POST">
+            
+            {% csrf_token %} 
+            <input type="file" accept=".csv">
+            <button type="submit">Download Update File</button>
+    </form>
 
+        <style>
+
+            .pathbottext{
+                width: 450px;
+                margin-top: 750px;
+                margin-left: 850px;
+                border-top-width: 6px;
+                border-top-style: solid;
+                border-right-width: 6px;
+                border-right-style: solid;
+                border-bottom-width: 6px;
+                border-bottom-style: solid;
+                border-left-width: 6px;
+                border-left-style: solid;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+            .pathbotlogo {
+                
+                right: 0px;
+                bottom: 1px;
+                top: 0px;
+                left: 650;
+                margin-left: 650px;
+                margin-top: -300px;
+            }
+
+            .pathbotbot img {
+            right: 0px;
+            width: 300px;
+            bottom: 1px;
+            top: 0px;
+            left: 1000;
+            margin-left: 1000px;
+            margin-top: 100px;
+            }
         
-
-
+        form input{
+            margin-right: 2px;
+            margin-left: 820px;
+            margin-top: 50px;
+        }
+        form button{
+            width: 150px;
+            margin-left: 1200px;
+            margin-top: -27px;
+        }
+        
+        </style>
+    
 
     <script>let list = document.querySelectorAll(".navigation li");
 
