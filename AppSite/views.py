@@ -60,7 +60,7 @@ def register(request):
             return redirect('home')
     else:
         form = RegistrationForm()
-    return render(request, 'Appsite/register.html', {'form': form})
+    return render(request, 'AppSite/register.html', {'form': form})
 
 
 
