@@ -3,9 +3,6 @@ from django.shortcuts import render, redirect, HttpResponse
 from .forms import RegistrationForm
 import pandas as pd
 from pandas import DataFrame
-from django.views.generic import View 
-from rest_framework.views import APIView 
-from rest_framework.response import Response
 import psycopg2
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
@@ -326,18 +323,24 @@ def Ai_gather(request):
                 print("AIB")
             else:
                 print("Evalon")
-
-
+        if str(file).endswith('.xlsx'):
+            df = pd.read_excel(file) # if file is xlsx
+        else:
+            df = pd.read_csv(file) # if the file is a csv
+        df['Best_Acquirer'] = predictions
+        updated = df.to_csv(index=False)
+        response = HttpResponse(updated, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="downloaded_file.csv"'
+        return response
     
 
 def Ai_interface(request):
     if request.method == 'POST':
-
-        df = pd.read_csv('existing_file_with_new_column.csv')
+        df = pd.read_csv('Book2.csv')
 
 
         label_encoders = {}
-        columns = ['card_type', '3ds_secure', 'cardholder_country', 'issuer_country', 'transaction_method']
+        columns = ['card_type', '3ds_secure', 'cardholder_country', 'issuer_country', 'transaction_method','region','currency1','currency2','merchant','method','amount']
         for feature in columns:
             le = LabelEncoder()
             df[feature] = le.fit_transform(df[feature])
@@ -390,7 +393,7 @@ def Ai_interface(request):
         predicted_classes = le_Acquirer.inverse_transform(predictions.argmax(axis=1))
 
         print("Predicted classes:", predicted_classes)
-        df = pd.read_csv('existing_file_with_new_column.csv')
+        df = pd.read_csv("Book2.csv")
         df['Best_Acquirer'] = predicted_classes
         print(df)
         updated = df.to_csv(index=False)

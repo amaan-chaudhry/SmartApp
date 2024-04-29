@@ -204,21 +204,14 @@
         }
     });
     function ChartUpdate(newData,updatedlist) {
-        console.log(newData); // Log the entire newData object for debugging
-    
-    // Check if myChart is defined and not null
     if (myChart) {
-        console.log("Chart reference found. Updating data...");
-        // Update datasets if newData contains the expected structure
         if (newData.dataset1 && newData.dataset2 && newData.dataset3) {
-            console.log(typeof(newData.dataset3));
             myChart.data.datasets[0].data = eval(newData.dataset1);
             myChart.data.datasets[1].data = eval(newData.dataset2);
             myChart.data.datasets[2].data = eval(newData.dataset3);
             PieChart.data.datasets[0].data = updatedlist;
             PieChart.update();
-            myChart.update(); // Update the chart
-            console.log("Chart updated successfully.");
+            myChart.update(); 
         } else {
             console.error("Error: Invalid data format in newData.");
         }
@@ -232,7 +225,6 @@
     barc_msc = document.getElementById('Barclays_msc');
     lowest = document.getElementById('Lowest Amount');
     const selectedRowData = csvData[currentIndex]; 
-    console.log(selectedRowData);
     fetch('/process_csv/', {
         method: 'POST',
         headers: {
@@ -244,20 +236,17 @@
     .then(response => response.json())
     .then(data => {
         const updated = eval(data.result);
-        const hello = eval(updated.dataset1);
-        const bye = eval(updated.dataset2);
-        const try1 = eval(updated.dataset3);
-        const aib_update = hello[0] + bye[0] + try1[0];
-        const elavon_update = hello[1] + bye[1] + try1[1];
-        const barclays_update  = hello[2] + bye[2] + try1[2];
+        const upddataset1 = eval(updated.dataset1);
+        const upddataset2 = eval(updated.dataset2);
+        const upddataset3 = eval(updated.dataset3);
+        const aib_update = upddataset1[0] + upddataset2[0] + upddataset3[0];
+        const elavon_update = upddataset1[1] + upddataset2[1] + upddataset3[1];
+        const barclays_update  = upddataset1[2] + upddataset2[2] + upddataset3[2];
         ChartUpdate(data.result,[aib_update,elavon_update,barclays_update]);
-        console.log(hello);
-        aib_msc.innerHTML = `£${hello[0] + bye[0] + try1[0]}`;
-        elavon_msc.innerHTML =  `£${hello[1] + bye[1] + try1[1]}`;
-        barc_msc.innerHTML =  `£${hello[2] + bye[2] + try1[2]}`;
+        aib_msc.innerHTML = `£${upddataset1[0] + upddataset2[0] + upddataset3[0]}`;
+        elavon_msc.innerHTML =  `£${upddataset1[1] + upddataset2[1] + upddataset3[1]}`;
+        barc_msc.innerHTML =  `£${upddataset1[2] + upddataset2[2] + upddataset3[2]}`;
         lowest.innerHTML = `Lowest MSC Acquirer : ${updated.lowest}`;
-
-        //document.getElementById('python-output').innerHTML = html;
     })
     .catch(error => {
         console.error('Error:', error);
@@ -307,17 +296,17 @@
             labels: ['AIB', 'Elavon', 'Barclays'],
             datasets: [{
                 label: 'Data',
-                data: [33.33, 33.33, 33.34], // Divide into three equal sections
+                data: [33.33, 33.33, 33.34], 
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
                     'rgb(255, 205, 86)'
                 ],
-                hoverOffset: 4 // Add a hover offset to highlight slices on hover
+                hoverOffset: 4 
             }]
         };
 
-        // Configuration options
+
         const options = {
             responsive: true,
             plugins: {
