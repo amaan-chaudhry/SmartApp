@@ -1,54 +1,55 @@
-VISA Consumer Credit,Enabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,5321,EMV Chip (incl. Contactless),2742
-MC Consumer Debit,Disabled,Spain,United Kingdom,INTRA,EUR,GBP,4854,EMV Chip (incl. Contactless),729
-VISA Commercial Purchase,Enabled,Germany,Italy,INTRA,EUR,EUR,7019,Electronic Commerce,348
-MC Commercial Business,Disabled,France,France,DOMESTIC,EUR,EUR,4283,Electronic Commerce,7263
-VISA Commercial Corporate,Enabled,Liechtenstein,Latvia,INTRA,EUR,EUR,9776,EMV Chip (inc. Contactless),965903
-VISA Consumer Credit,Enabled,Czech Republic,Norway,INTRA,EUR,EUR,5865,Electronic Commerce,488153
-MC Commercial Business,Enabled,Slovakia,Czech Republic,INTRA,EUR,EUR,8268,Electronic Commerce,620
-VISA Commercial Corporate,Enabled,Iceland,Hungary,INTRA,EUR,EUR,8320,Electronic Commerce,1700
-MC Commercial Business,Disabled,Estonia,Estonia,DOMESTIC,EUR,EUR,7987,Electronic Commerce,3662
-VISA Consumer Debit,Disabled,Lithuania,Ireland,INTRA,EUR,EUR,5802,EMV Chip (inc. Contactless),19
-VISA Commercial Credit,Enabled,France,Portugal,INTRA,EUR,EUR,5805,Electronic Commerce,5435
-VISA Consumer Debit,Enabled,Sweden,Bulgaria,INTRA,EUR,EUR,9071,Electronic Commerce,83
-VISA Commercial Business,Disabled,Slovenia,Slovenia,DOMESTIC,EUR,EUR,8210,Electronic Commerce,87
-VISA Commercial Business,Disabled,Czech Republic,Austria,INTRA,EUR,EUR,7010,Electronic Commerce,72024
-VISA Commercial Credit,Enabled,Poland,Slovakia,INTRA,EUR,EUR,5868,EMV Chip (inc. Contactless),46185
-VISA Commercial Credit,Disabled,Greece,Iceland,INTRA,EUR,EUR,8012,Electronic Commerce,144118
-MC Consumer Debit,Enabled,Norway,Malta,INTRA,EUR,EUR,7021,EMV Chip (inc. Contactless),21337
-VISA Consumer Credit,Disabled,Spain,Malta,INTRA,EUR,EUR,8217,Electronic Commerce,759367
-MC Consumer Credit,Enabled,Switzerland,Switzerland,DOMESTIC,EUR,EUR,4661,EMV Chip (inc. Contactless),3002
-MC Commercial Purchase,Disabled,Greece,Croatia,INTRA,EUR,EUR,5990,Electronic Commerce,34014
-MC Consumer Credit,Disabled,Liechtenstein,Luxembourg,INTRA,EUR,EUR,4798,Electronic Commerce,832186
-VISA Consumer Credit,Disabled,Iceland,Sweden,INTRA,EUR,EUR,4384,EMV Chip (inc. Contactless),629
-MC Commercial Business,Disabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,5248,EMV Chip (inc. Contactless),77614
-VISA Commercial Credit,Enabled,Croatia,Croatia,DOMESTIC,EUR,EUR,9820,Electronic Commerce,258479
-MC Commercial Corporate,Disabled,Croatia,Lithuania,INTRA,EUR,EUR,5245,EMV Chip (inc. Contactless),59
-VISA Commercial Business,Disabled,Iceland,Iceland,DOMESTIC,EUR,EUR,5335,Electronic Commerce,443730
-MC Consumer Debit,Enabled,Italy,Slovenia,INTRA,EUR,EUR,4264,EMV Chip (inc. Contactless),656955
-MC Commercial Corporate,Disabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,5851,EMV Chip (inc. Contactless),70
-VISA Commercial Credit,Enabled,Ireland,Malta,INTRA,EUR,EUR,8209,EMV Chip (inc. Contactless),50167
-VISA Consumer Debit,Enabled,France,France,DOMESTIC,EUR,EUR,4398,EMV Chip (inc. Contactless),957712
-VISA Commercial Business,Disabled,Belgium,Belgium,INTRA,EUR,EUR,5807,Electronic Commerce,430217
-VISA Commercial Business,Enabled,Poland,Hungary,INTRA,EUR,EUR,5350,EMV Chip (inc. Contactless),772300
-VISA Commercial Business,Enabled,Finland,Cyprus,INTRA,EUR,EUR,5862,Electronic Commerce,443264
-MC Consumer Debit,Disabled,Ireland,Ireland,DOMESTIC,EUR,EUR,7080,Electronic Commerce,284784
-VISA Commercial Corporate,Enabled,Latvia,Cyprus,INTRA,EUR,EUR,4860,EMV Chip (inc. Contactless),860789
-MC Commercial Business,Disabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,5280,Electronic Commerce,35
-VISA Commercial Corporate,Enabled,France,Poland,INTRA,EUR,EUR,4812,Electronic Commerce,852060
-MC Consumer Debit,Enabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,7802,EMV Chip (inc. Contactless),3985
-VISA Commercial Credit,Enabled,Ireland,Bulgaria,INTRA,EUR,EUR,8064,EMV Chip (inc. Contactless),30
-VISA Consumer Credit,Enabled,Norway,Greece,INTRA,EUR,EUR,7042,EMV Chip (inc. Contactless),745995
-VISA Commercial Purchase,Enabled,Croatia,Croatia,DOMESTIC,EUR,EUR,8254,EMV Chip (inc. Contactless),414220
-VISA Commercial Purchase,Enabled,Cyprus,Slovakia,INTRA,EUR,EUR,5290,Electronic Commerce,726026
-MC Consumer Debit,Enabled,Luxembourg,Luxembourg,DOMESTIC,EUR,EUR,8252,Electronic Commerce,71375
-VISA Consumer Credit,Disabled,Croatia,Spain,INTRA,EUR,EUR,5364,EMV Chip (inc. Contactless),33
-VISA Consumer Credit,Disabled,Greece,Bulgaria,INTRA,EUR,EUR,8031,EMV Chip (inc. Contactless),444
-VISA Commercial Business,Enabled,Luxembourg,Netherlands,INTRA,EUR,EUR,8319,Electronic Commerce,6728
-VISA Commercial Business,Enabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,8350,EMV Chip (inc. Contactless),9193
-MC Commercial Business,Enabled,Estonia,Greece,INTRA,EUR,EUR,5827,Electronic Commerce,64776
-VISA Consumer Credit,Enabled,Austria,Belgium,INTRA,EUR,EUR,7899,EMV Chip (inc. Contactless),91
-MC Commercial Purchase,Enabled,Netherlands,Czech Republic,INTRA,EUR,EUR,8290,Electronic Commerce,480761
-VISA Consumer Credit,Disabled,Slovakia,Romania,INTRA,EUR,EUR,7011,EMV Chip (inc. Contactless),30826
-VISA Commercial Purchase,Disabled,Malta,Malta,DOMESTIC,EUR,EUR,7827,EMV Chip (inc. Contactless),329321
-MC Commercial Corporate,Disabled,Latvia,United Kingdom,INTRA,EUR,EUR,8031,Electronic Commerce,8
-VISA Commercial Corporate,Disabled,Spain,Czech Republic,INTRA,EUR,EUR,5290,EMV Chip (inc. Contactless),72182
+card_type,3ds_secure,cardholder_country,issuer_country,region,currency1,currency2,merchant,transaction_method,amount,Acquirer
+VISA Consumer Credit,Enabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,5321,EMV Chip (incl. Contactless),2742,
+MC Consumer Debit,Disabled,Spain,United Kingdom,INTRA,EUR,GBP,4854,EMV Chip (incl. Contactless),729,
+VISA Commercial Purchase,Enabled,Germany,Italy,INTRA,EUR,EUR,7019,Electronic Commerce,348,
+MC Commercial Business,Disabled,France,France,DOMESTIC,EUR,EUR,4283,Electronic Commerce,7263,
+VISA Commercial Corporate,Enabled,Liechtenstein,Latvia,INTRA,EUR,EUR,9776,EMV Chip (inc. Contactless),965903,
+VISA Consumer Credit,Enabled,Czech Republic,Norway,INTRA,EUR,EUR,5865,Electronic Commerce,488153,
+MC Commercial Business,Enabled,Slovakia,Czech Republic,INTRA,EUR,EUR,8268,Electronic Commerce,620,
+VISA Commercial Corporate,Enabled,Iceland,Hungary,INTRA,EUR,EUR,8320,Electronic Commerce,1700,
+MC Commercial Business,Disabled,Estonia,Estonia,DOMESTIC,EUR,EUR,7987,Electronic Commerce,3662,
+VISA Consumer Debit,Disabled,Lithuania,Ireland,INTRA,EUR,EUR,5802,EMV Chip (inc. Contactless),19,
+VISA Commercial Credit,Enabled,France,Portugal,INTRA,EUR,EUR,5805,Electronic Commerce,5435,
+VISA Consumer Debit,Enabled,Sweden,Bulgaria,INTRA,EUR,EUR,9071,Electronic Commerce,83,
+VISA Commercial Business,Disabled,Slovenia,Slovenia,DOMESTIC,EUR,EUR,8210,Electronic Commerce,87,
+VISA Commercial Business,Disabled,Czech Republic,Austria,INTRA,EUR,EUR,7010,Electronic Commerce,72024,
+VISA Commercial Credit,Enabled,Poland,Slovakia,INTRA,EUR,EUR,5868,EMV Chip (inc. Contactless),46185,
+VISA Commercial Credit,Disabled,Greece,Iceland,INTRA,EUR,EUR,8012,Electronic Commerce,144118,
+MC Consumer Debit,Enabled,Norway,Malta,INTRA,EUR,EUR,7021,EMV Chip (inc. Contactless),21337,
+VISA Consumer Credit,Disabled,Spain,Malta,INTRA,EUR,EUR,8217,Electronic Commerce,759367,
+MC Consumer Credit,Enabled,Switzerland,Switzerland,DOMESTIC,EUR,EUR,4661,EMV Chip (inc. Contactless),3002,
+MC Commercial Purchase,Disabled,Greece,Croatia,INTRA,EUR,EUR,5990,Electronic Commerce,34014,
+MC Consumer Credit,Disabled,Liechtenstein,Luxembourg,INTRA,EUR,EUR,4798,Electronic Commerce,832186,
+VISA Consumer Credit,Disabled,Iceland,Sweden,INTRA,EUR,EUR,4384,EMV Chip (inc. Contactless),629,
+MC Commercial Business,Disabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,5248,EMV Chip (inc. Contactless),77614,
+VISA Commercial Credit,Enabled,Croatia,Croatia,DOMESTIC,EUR,EUR,9820,Electronic Commerce,258479,
+MC Commercial Corporate,Disabled,Croatia,Lithuania,INTRA,EUR,EUR,5245,EMV Chip (inc. Contactless),59,
+VISA Commercial Business,Disabled,Iceland,Iceland,DOMESTIC,EUR,EUR,5335,Electronic Commerce,443730,
+MC Consumer Debit,Enabled,Italy,Slovenia,INTRA,EUR,EUR,4264,EMV Chip (inc. Contactless),656955,
+MC Commercial Corporate,Disabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,5851,EMV Chip (inc. Contactless),70,
+VISA Commercial Credit,Enabled,Ireland,Malta,INTRA,EUR,EUR,8209,EMV Chip (inc. Contactless),50167,
+VISA Consumer Debit,Enabled,France,France,DOMESTIC,EUR,EUR,4398,EMV Chip (inc. Contactless),957712,
+VISA Commercial Business,Disabled,Belgium,Belgium,INTRA,EUR,EUR,5807,Electronic Commerce,430217,
+VISA Commercial Business,Enabled,Poland,Hungary,INTRA,EUR,EUR,5350,EMV Chip (inc. Contactless),772300,
+VISA Commercial Business,Enabled,Finland,Cyprus,INTRA,EUR,EUR,5862,Electronic Commerce,443264,
+MC Consumer Debit,Disabled,Ireland,Ireland,DOMESTIC,EUR,EUR,7080,Electronic Commerce,284784,
+VISA Commercial Corporate,Enabled,Latvia,Cyprus,INTRA,EUR,EUR,4860,EMV Chip (inc. Contactless),860789,
+MC Commercial Business,Disabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,5280,Electronic Commerce,35,
+VISA Commercial Corporate,Enabled,France,Poland,INTRA,EUR,EUR,4812,Electronic Commerce,852060,
+MC Consumer Debit,Enabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,7802,EMV Chip (inc. Contactless),3985,
+VISA Commercial Credit,Enabled,Ireland,Bulgaria,INTRA,EUR,EUR,8064,EMV Chip (inc. Contactless),30,
+VISA Consumer Credit,Enabled,Norway,Greece,INTRA,EUR,EUR,7042,EMV Chip (inc. Contactless),745995,
+VISA Commercial Purchase,Enabled,Croatia,Croatia,DOMESTIC,EUR,EUR,8254,EMV Chip (inc. Contactless),414220,
+VISA Commercial Purchase,Enabled,Cyprus,Slovakia,INTRA,EUR,EUR,5290,Electronic Commerce,726026,
+MC Consumer Debit,Enabled,Luxembourg,Luxembourg,DOMESTIC,EUR,EUR,8252,Electronic Commerce,71375,
+VISA Consumer Credit,Disabled,Croatia,Spain,INTRA,EUR,EUR,5364,EMV Chip (inc. Contactless),33,
+VISA Consumer Credit,Disabled,Greece,Bulgaria,INTRA,EUR,EUR,8031,EMV Chip (inc. Contactless),444,
+VISA Commercial Business,Enabled,Luxembourg,Netherlands,INTRA,EUR,EUR,8319,Electronic Commerce,6728,
+VISA Commercial Business,Enabled,United Kingdom,United Kingdom,DOMESTIC,GBP,GBP,8350,EMV Chip (inc. Contactless),9193,
+MC Commercial Business,Enabled,Estonia,Greece,INTRA,EUR,EUR,5827,Electronic Commerce,64776,
+VISA Consumer Credit,Enabled,Austria,Belgium,INTRA,EUR,EUR,7899,EMV Chip (inc. Contactless),91,
+MC Commercial Purchase,Enabled,Netherlands,Czech Republic,INTRA,EUR,EUR,8290,Electronic Commerce,480761,
+VISA Consumer Credit,Disabled,Slovakia,Romania,INTRA,EUR,EUR,7011,EMV Chip (inc. Contactless),30826,
+VISA Commercial Purchase,Disabled,Malta,Malta,DOMESTIC,EUR,EUR,7827,EMV Chip (inc. Contactless),329321,
+MC Commercial Corporate,Disabled,Latvia,United Kingdom,INTRA,EUR,EUR,8031,Electronic Commerce,8,
+VISA Commercial Corporate,Disabled,Spain,Czech Republic,INTRA,EUR,EUR,5290,EMV Chip (inc. Contactless),72182,

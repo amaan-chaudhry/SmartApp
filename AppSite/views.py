@@ -336,11 +336,12 @@ def Ai_gather(request):
 
 def Ai_interface(request):
     if request.method == 'POST':
-        df = pd.read_csv('Book2.csv')
+        df = pd.read_csv('AI_learningdata.csv')
 
 
         label_encoders = {}
-        columns = ['card_type', '3ds_secure', 'cardholder_country', 'issuer_country', 'transaction_method','region','currency1','currency2','merchant','method','amount']
+        columns = ['card_type', '3ds_secure', 'cardholder_country', 'issuer_country','region','currency1','currency2','merchant','transaction_method','amount']
+        #these are the columns which it compares
         for feature in columns:
             le = LabelEncoder()
             df[feature] = le.fit_transform(df[feature])
@@ -375,13 +376,13 @@ def Ai_interface(request):
         model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
  
-        model.fit(X_train, y_train_one_hot, epochs=15, batch_size=32)
+        model.fit(X_train, y_train_one_hot, epochs=200, batch_size=32)
 
 
         _, accuracy = model.evaluate(X_test, y_test_one_hot)
         print('Accuracy: %.2f' % (accuracy * 100))
 
-        new_data = pd.read_csv('existing_file_with_new_column.csv')
+        new_data = pd.read_csv('Book2.csv')
 
  
         for feature in columns:
