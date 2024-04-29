@@ -149,3 +149,6 @@ STATIC_URL = '/AppSite/static/'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 RECAPTCHA_PUBLIC_KEY = '6LdjR7wpAAAAAHt4Yh9ObhpdPigx50r3LMlYspgE'
 RECAPTCHA_PRIVATE_KEY = '6LdjR7wpAAAAAI8L3c7you6K9SKusOkmE7XhFLJG'
+
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
